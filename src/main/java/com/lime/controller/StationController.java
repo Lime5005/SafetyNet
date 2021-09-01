@@ -1,30 +1,37 @@
 package com.lime.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lime.domain.Station;
+import com.lime.repository.StationRepository;
+import com.lime.service.SafetyNetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 @Controller
 public class StationController {
-    private static final ObjectMapper mapper = new ObjectMapper();
+
+    SafetyNetService safetyNetService;
+
+    @Autowired
+    public StationController(SafetyNetService safetyNetService) {
+        this.safetyNetService = safetyNetService;
+    }
 
     @ResponseBody
     @RequestMapping("/firestation")
-    public static Object getStations() {
-        try {
-            var allInfo = mapper.readValue(new URL("https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DA+Java+EN/P5+/data.json"), Map.class);
+    public List<Station> getStations() {
+        return safetyNetService.getAllStations();
+    }
 
-            Object stations = allInfo.get("firestations");
-
-            return stations;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    @ResponseBody
+    @RequestMapping(path="/phoneAlert", method = RequestMethod.GET)
+    public LinkedHashSet<String> getPhones(@RequestParam int firestation) {
+        return safetyNetService.getAllPhonesByStation(firestation);
     }
 }

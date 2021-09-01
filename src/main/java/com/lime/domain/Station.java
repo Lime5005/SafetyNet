@@ -1,8 +1,8 @@
-package com.lime.model;
+package com.lime.domain;
 
 public class Station {
     private String address;
-    private int stationNumber;
+    private int station;
 
     public String getAddress() {
         return address;
@@ -13,18 +13,18 @@ public class Station {
     }
 
     public int getStation() {
-        return stationNumber;
+        return station;
     }
 
     public void setStation(int station) {
-        this.stationNumber = station;
+        this.station = station;
     }
 
     @Override
     public String toString() {
         return "Station{" +
                 "address='" + address + '\'' +
-                ", station='" + stationNumber + '\'' +
+                ", station='" + station + '\'' +
                 '}';
     }
 }

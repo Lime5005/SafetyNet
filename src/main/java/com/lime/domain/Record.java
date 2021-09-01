@@ -1,4 +1,4 @@
-package com.lime.model;
+package com.lime.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
