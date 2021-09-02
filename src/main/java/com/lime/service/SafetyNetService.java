@@ -42,8 +42,8 @@ public class SafetyNetService {
      * @param city the city name.
      * @return a list of email.
      */
-    public List<String> getAllEmailsByCity(String city) {
-        List<String> list = new ArrayList<>();
+    public LinkedHashSet<String> getAllEmailsByCity(String city) {
+        LinkedHashSet<String> list = new LinkedHashSet<>();
         for (Person person : this.getAllPersons()) {
             if (person.getCity().equals(city)) {
                 list.add(person.getEmail());
@@ -67,15 +67,14 @@ public class SafetyNetService {
      * @param station station number.
      * @return a list of phone numbers.
      */
-    public LinkedHashSet<String> getAllPhonesByStation(int station) {
-//        List<String> phones = new ArrayList<>();
+    public LinkedHashSet<String> getAllPhonesByStation(String station) {
         LinkedHashSet<String> phones = new LinkedHashSet<>();
         List<String> addresses = new ArrayList<>();
         List<Station> allStations = this.getAllStations();
         List<Person> allPersons = this.getAllPersons();
 
         for (Station aStation : allStations) {
-                if (aStation.getStation() == station) {
+                if (aStation.getStation().equals(station)) {
                     addresses.add(aStation.getAddress());
                 }
         }

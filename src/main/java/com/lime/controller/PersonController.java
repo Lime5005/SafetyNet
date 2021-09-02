@@ -2,8 +2,10 @@ package com.lime.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lime.controller.dto.PersonInfoDto;
 import com.lime.domain.Person;
 import com.lime.domain.Record;
+import com.lime.service.DtoService;
 import com.lime.service.SafetyNetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -18,10 +21,12 @@ import java.util.Map;
 public class PersonController {
 
     SafetyNetService safetyNetService;
+    DtoService dtoService;
 
     @Autowired
-    public PersonController(SafetyNetService safetyNetService) {
+    public PersonController(SafetyNetService safetyNetService, DtoService dtoService) {
         this.safetyNetService = safetyNetService;
+        this.dtoService = dtoService;
     }
 
     @ResponseBody
@@ -32,13 +37,13 @@ public class PersonController {
 
     @ResponseBody
     @RequestMapping(path="/personInfo", method = RequestMethod.GET)
-    public Map<Person, Record> getPersonByName(@RequestParam String firstName, @RequestParam String lastName ) {
-        return safetyNetService.getAPersonWithRecord(firstName, lastName);// TODO: change to dto.
+    public PersonInfoDto getPersonByName(@RequestParam String firstName, @RequestParam String lastName ) {
+        return dtoService.getAPersonWithRecord(firstName, lastName);
     }
 
     @ResponseBody
     @RequestMapping(path="/communityEmail", method = RequestMethod.GET)
-    public List<String> getAllPhonesByCity(@RequestParam String city) {
+    public LinkedHashSet<String> getAllPhonesByCity(@RequestParam String city) {
         return safetyNetService.getAllEmailsByCity(city);
     }
 
