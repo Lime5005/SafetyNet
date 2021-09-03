@@ -2,7 +2,7 @@ package com.lime.domain;
 
 public class Station {
     private String address;
-    private String station;
+    private int station;
 
     public String getAddress() {
         return address;
@@ -12,11 +12,11 @@ public class Station {
         this.address = address;
     }
 
-    public String getStation() {
+    public int getStation() {
         return station;
     }
 
-    public void setStation(String station) {
+    public void setStation(int station) {
         this.station = station;
     }
 

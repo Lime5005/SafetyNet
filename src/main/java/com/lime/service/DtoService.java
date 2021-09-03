@@ -1,5 +1,6 @@
 package com.lime.service;
 
+import com.lime.controller.dto.FireAddressDto;
 import com.lime.controller.dto.FloodStationDto;
 import com.lime.controller.dto.PersonInfoDto;
 import com.lime.domain.Person;
@@ -55,15 +56,16 @@ public class DtoService {
      * @param stations station numbers in list.
      * @return a list of person with medical records.
      */
-    public List<FloodStationDto> findAllPersonByStation(List<String> stations) {
-        // Todo: find why it's only taking the first address in count?
+    public List<FloodStationDto> findAllPersonByStation(List<Integer> stations) {
+        // find why it's only taking the first address in account?
+        // Because I returned the result too early in the for loop!
         List<FloodStationDto> list = new ArrayList<>();
         List<Station> stationsByNumber;
         List<String> allAddresses;
         List<String> groupAddress = new ArrayList<>();
 
         //1, Find all addresses concerned first:
-        for (String station : stations) {
+        for (Integer station : stations) {
 
             stationsByNumber = stationRepository.getStationsByNumber(station);
 
@@ -87,6 +89,31 @@ public class DtoService {
                 }
             }
         }
+        return list;
+    }
+
+    public List<FireAddressDto> findStationsByAddress(String address) {
+        List<FireAddressDto> list = new ArrayList<>();
+        List<Station> stations = stationRepository.getStationsByAddress(address);
+        //1, Find all station numbers for this address:
+        List<Integer> numbers = new ArrayList<>();
+        for (Station station : stations) {
+            numbers.add(station.getStation());
+        }
+        //2, Find all person nearby:
+        List<Person> persons = personRepository.findPersonsByAddress(address);
+        //3, Find the records:
+        for (Person person : persons) {
+            String firstName = person.getFirstName();
+            String lastName = person.getLastName();
+            String phone = person.getPhone();
+            Record recordByName = recordRepository.findRecordByName(firstName, lastName);
+            int age = recordRepository.getAge(recordByName.getBirthdate());
+            List<String> medications = recordByName.getMedications();
+            List<String> allergies = recordByName.getAllergies();
+            list.add(new FireAddressDto(firstName, lastName, phone, age, medications, allergies, numbers));
+        }
+
         return list;
     }
 

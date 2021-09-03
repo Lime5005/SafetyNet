@@ -27,10 +27,10 @@ public class StationRepository {
      * @param station station number.
      * @return a list of Station object.
      */
-    public List<Station> getStationsByNumber(String station) {
+    public List<Station> getStationsByNumber(int station) {
         List<Station> list = new ArrayList<>();
         for (Station fireStation : this.getAllStations()) {
-            if (fireStation.getStation().equals(station)) {
+            if (fireStation.getStation() == station) {
                 list.add(fireStation);
             }
         }

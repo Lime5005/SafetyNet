@@ -52,29 +52,20 @@ public class SafetyNetService {
         return list;
     }
 
-    //Todo: move to dto.
-    public Map<Person, Record> getAPersonWithRecord(String firstName, String lastName) {
-        Map<Person, Record>  map = new HashMap<>();
-        Person personByName = personRepository.findPersonByName(firstName, lastName);
-        Record recordByName = recordRepository.findRecordByName(firstName, lastName);
-        map.put(personByName, recordByName);
-        return map;
-    }
-
     /**
      * Get all phone numbers of person living nearby the fire station.
      * Each station may have multiple addresses, find all the phones of person living in the addresses.
      * @param station station number.
      * @return a list of phone numbers.
      */
-    public LinkedHashSet<String> getAllPhonesByStation(String station) {
+    public LinkedHashSet<String> getAllPhonesByStation(int station) {
         LinkedHashSet<String> phones = new LinkedHashSet<>();
         List<String> addresses = new ArrayList<>();
         List<Station> allStations = this.getAllStations();
         List<Person> allPersons = this.getAllPersons();
 
         for (Station aStation : allStations) {
-                if (aStation.getStation().equals(station)) {
+                if (aStation.getStation() == station) {
                     addresses.add(aStation.getAddress());
                 }
         }
