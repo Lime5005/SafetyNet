@@ -95,8 +95,9 @@ public class DtoService {
      * @param address the address
      * @return a list of person with medical records and the station numbers.
      */
-    public List<FireAddressDto> findStationsByAddress(String address) {
-        List<FireAddressDto> list = new ArrayList<>();
+    public FireAddressDto findStationsByAddress(String address) {
+        FireAddressDto fireAddressDto = new FireAddressDto();
+        List<PersonWithRecord> list = new ArrayList<>();
         List<Station> stations = stationRepository.getStationsByAddress(address);
         //1, Find all station numbers for this address:
         List<Integer> numbers = new ArrayList<>();
@@ -114,10 +115,11 @@ public class DtoService {
             int age = recordRepository.getAge(recordByName.getBirthdate());
             List<String> medications = recordByName.getMedications();
             List<String> allergies = recordByName.getAllergies();
-            list.add(new FireAddressDto(firstName, lastName, phone, age, medications, allergies, numbers));
+            list.add(new PersonWithRecord(firstName, lastName, phone, age, medications, allergies));
         }
-
-        return list;
+        fireAddressDto.setPersonWithRecordList(list);
+        fireAddressDto.setStationNumbers(numbers);
+        return fireAddressDto;
     }
 
     /**

@@ -50,7 +50,7 @@ public class StationController {
 
     @ResponseBody
     @RequestMapping(path="/fire", method = RequestMethod.GET)
-    public List<FireAddressDto> getStationsByAddress(@RequestParam String address) {
+    public FireAddressDto getStationsByAddress(@RequestParam String address) {
         return dtoService.findStationsByAddress(address);
     }
 
