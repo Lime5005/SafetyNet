@@ -1,22 +1,19 @@
 package com.lime.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lime.controller.dto.ChildAlertDto;
 import com.lime.controller.dto.PersonInfoDto;
 import com.lime.domain.Person;
-import com.lime.domain.Record;
 import com.lime.service.DtoService;
 import com.lime.service.SafetyNetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class PersonController {

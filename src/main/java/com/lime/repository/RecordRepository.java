@@ -1,16 +1,13 @@
 package com.lime.repository;
 
 import com.lime.domain.Database;
-import com.lime.domain.Person;
 import com.lime.domain.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.stream.util.XMLEventConsumer;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
