@@ -1,6 +1,7 @@
 package com.lime.controller;
 
 import com.lime.controller.dto.FireAddressDto;
+import com.lime.controller.dto.FireCoverDto;
 import com.lime.controller.dto.FloodStationDto;
 import com.lime.domain.Station;
 import com.lime.repository.StationRepository;
@@ -51,6 +52,11 @@ public class StationController {
     @RequestMapping(path="/fire", method = RequestMethod.GET)
     public List<FireAddressDto> getStationsByAddress(@RequestParam String address) {
         return dtoService.findStationsByAddress(address);
+    }
 
+    @ResponseBody
+    @RequestMapping(path = "/firestation", method = RequestMethod.GET)
+    public FireCoverDto getPersonsByStationNumber(@RequestParam int stationNumber) {
+        return dtoService.findPersonsByStationNumber(stationNumber);
     }
 }

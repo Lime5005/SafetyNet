@@ -1,9 +1,6 @@
 package com.lime.service;
 
-import com.lime.controller.dto.ChildAlertDto;
-import com.lime.controller.dto.FireAddressDto;
-import com.lime.controller.dto.FloodStationDto;
-import com.lime.controller.dto.PersonInfoDto;
+import com.lime.controller.dto.*;
 import com.lime.domain.Person;
 import com.lime.domain.Record;
 import com.lime.domain.Station;
@@ -150,6 +147,37 @@ public class DtoService {
         }
 
         return list;
+    }
+
+    public FireCoverDto findPersonsByStationNumber(int station) {
+        FireCoverDto fireCoverDto = new FireCoverDto();
+        List<APerson> personList = new ArrayList<>();
+        int total_adult = 0;
+        int total_child = 0;
+        //1, Find all addresses of this station number:
+        List<Station> stationsByNumber = stationRepository.getStationsByNumber(station);
+        List<String> addresses = stationRepository.findAllAddresses(stationsByNumber);
+        //2, Find all person living in these addresses:
+        for (String address : addresses) {
+            List<Person> persons = personRepository.findPersonsByAddress(address);
+            for (Person person : persons) {
+                //3, Find age by name:
+                String firstName = person.getFirstName();
+                String lastName = person.getLastName();
+                int age = recordRepository.getAgeByName(firstName, lastName);
+                if (age <= 18) {
+                    total_child += 1;
+                } else {
+                    total_adult += 1;
+                }
+                personList.add(new APerson(firstName, lastName, address, person.getPhone()));
+            }
+        }
+        fireCoverDto.setPersonList(personList);
+        fireCoverDto.setTotal_adult(total_adult);
+        fireCoverDto.setTotal_child(total_child);
+
+        return fireCoverDto;
     }
 
 }
