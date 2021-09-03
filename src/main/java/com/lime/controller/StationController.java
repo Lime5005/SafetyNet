@@ -4,7 +4,6 @@ import com.lime.controller.dto.FireAddressDto;
 import com.lime.controller.dto.FireCoverDto;
 import com.lime.controller.dto.FloodStationDto;
 import com.lime.domain.Station;
-import com.lime.repository.StationRepository;
 import com.lime.service.DtoService;
 import com.lime.service.SafetyNetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class StationController {
@@ -31,7 +29,7 @@ public class StationController {
     }
 
     @ResponseBody
-    @RequestMapping("/firestation")
+    @RequestMapping("/firestations")
     public List<Station> getStations() {
         return safetyNetService.getAllStations();
     }

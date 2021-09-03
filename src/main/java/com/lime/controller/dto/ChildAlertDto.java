@@ -5,43 +5,23 @@ import com.lime.domain.Person;
 import java.util.List;
 
 public class ChildAlertDto {
-    private String firstName;
-    private String lastName;
-    private int age;
+    private List<AChild> children;
     private List<Person> familyMembers;
 
     public ChildAlertDto() {
     }
 
-    public ChildAlertDto(String firstName, String lastName, int age, List<Person> familyMembers) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+    public ChildAlertDto(List<AChild> children, List<Person> familyMembers) {
+        this.children = children;
         this.familyMembers = familyMembers;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public List<AChild> getChildren() {
+        return children;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setChildren(List<AChild> children) {
+        this.children = children;
     }
 
     public List<Person> getFamilyMembers() {

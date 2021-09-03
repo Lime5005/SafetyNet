@@ -28,8 +28,8 @@ public class DtoService {
 
     /**
      * Find a person with his medical records by name.
-     * @param firstName firstname
-     * @param lastName lastname
+     * @param firstName firstname.
+     * @param lastName lastname.
      * @return Return firstName, lastName, address, age, email, and medical records.
      */
     public PersonInfoDto getAPersonWithRecord(String firstName, String lastName) {
@@ -92,7 +92,7 @@ public class DtoService {
 
     /**
      * Find all person living in this address and the list of fire stations.
-     * @param address the address
+     * @param address the address.
      * @return a list of person with medical records and the station numbers.
      */
     public FireAddressDto findStationsByAddress(String address) {
@@ -124,11 +124,12 @@ public class DtoService {
 
     /**
      * Find all children living in the address and their family members.
-     * @param address
+     * @param address the address.
      * @return a list of children or an empty list.
      */
-    public List<ChildAlertDto> findChildByAddress(String address) {
-        List<ChildAlertDto> list = new ArrayList<>();
+    public ChildAlertDto findChildByAddress(String address) {
+        ChildAlertDto childAlertDto = new ChildAlertDto();
+        List<AChild> list = new ArrayList<>();
         //1, All person living in the address:
         List<Person> persons = personRepository.findPersonsByAddress(address);
         List<Person> family = new ArrayList<>();
@@ -144,16 +145,17 @@ public class DtoService {
             }
             if (age <= 18) {
                 family.remove(person);
-                list.add(new ChildAlertDto(firstName, lastName, age, family));
+                list.add(new AChild(firstName, lastName, age));
             }
         }
-
-        return list;
+        childAlertDto.setChildren(list);
+        childAlertDto.setFamilyMembers(family);
+        return childAlertDto;
     }
 
     /**
      * Find all person covered by the fire station.
-     * @param station a station number
+     * @param station a station number.
      * @return An object with persons and total number for adults and children respectively.
      */
     public FireCoverDto findPersonsByStationNumber(int station) {

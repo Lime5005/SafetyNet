@@ -31,7 +31,7 @@ public class PersonController {
     }
 
     @ResponseBody
-    @RequestMapping("/person")
+    @RequestMapping("/persons")
     public List<Person> getPersons() {
          return safetyNetService.getAllPersons();
     }
@@ -50,7 +50,7 @@ public class PersonController {
 
     @ResponseBody
     @RequestMapping(path = "/childAlert", method = RequestMethod.GET)
-    public List<ChildAlertDto> getChildrenAlert(@RequestParam String address) {
+    public ChildAlertDto getChildrenAlert(@RequestParam String address) {
         return dtoService.findChildByAddress(address);
     }
 }
