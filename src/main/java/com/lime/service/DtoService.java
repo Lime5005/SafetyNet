@@ -1,5 +1,6 @@
 package com.lime.service;
 
+import com.lime.controller.dto.ChildAlertDto;
 import com.lime.controller.dto.FireAddressDto;
 import com.lime.controller.dto.FloodStationDto;
 import com.lime.controller.dto.PersonInfoDto;
@@ -92,6 +93,11 @@ public class DtoService {
         return list;
     }
 
+    /**
+     * Find all person living in this address and the list of fire stations.
+     * @param address the address
+     * @return a list of person with medical records and the station numbers.
+     */
     public List<FireAddressDto> findStationsByAddress(String address) {
         List<FireAddressDto> list = new ArrayList<>();
         List<Station> stations = stationRepository.getStationsByAddress(address);
@@ -112,6 +118,35 @@ public class DtoService {
             List<String> medications = recordByName.getMedications();
             List<String> allergies = recordByName.getAllergies();
             list.add(new FireAddressDto(firstName, lastName, phone, age, medications, allergies, numbers));
+        }
+
+        return list;
+    }
+
+    /**
+     * Find all children living in the address and their family members.
+     * @param address
+     * @return a list of children or an empty list.
+     */
+    public List<ChildAlertDto> findChildByAddress(String address) {
+        List<ChildAlertDto> list = new ArrayList<>();
+        //1, All person living in the address:
+        List<Person> persons = personRepository.findPersonsByAddress(address);
+        List<Person> family = new ArrayList<>();
+
+        for (Person person : persons) {
+            String firstName = person.getFirstName();
+            String lastName = person.getLastName();
+            // Who are children? Find age by name:
+            int age = recordRepository.getAgeByName(firstName, lastName);
+            // Find all family members:
+            if (person.getLastName().equals(lastName)) {
+                family.add(person);
+            }
+            if (age <= 18) {
+                family.remove(person);
+                list.add(new ChildAlertDto(firstName, lastName, age, family));
+            }
         }
 
         return list;

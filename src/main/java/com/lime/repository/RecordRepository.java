@@ -36,6 +36,13 @@ public class RecordRepository {
         return null;
     }
 
+    // From name to age:
+    public int getAgeByName(String firstName, String lastName) {
+        Record recordByName = this.findRecordByName(firstName, lastName);
+        Date birthdate = recordByName.getBirthdate();
+        return this.getAge(birthdate);
+    }
+
     public int getAge(Date birthDate) {
         LocalDate birthday = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 

@@ -2,6 +2,7 @@ package com.lime.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lime.controller.dto.ChildAlertDto;
 import com.lime.controller.dto.PersonInfoDto;
 import com.lime.domain.Person;
 import com.lime.domain.Record;
@@ -47,5 +48,9 @@ public class PersonController {
         return safetyNetService.getAllEmailsByCity(city);
     }
 
-
+    @ResponseBody
+    @RequestMapping(path = "/childAlert", method = RequestMethod.GET)
+    public List<ChildAlertDto> getChildrenAlert(@RequestParam String address) {
+        return dtoService.findChildByAddress(address);
+    }
 }
