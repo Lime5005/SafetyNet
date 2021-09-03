@@ -43,14 +43,4 @@ public class PersonRepository {
         return list;
     }
 
-    public List<Person> findPersonsByCity(String city) {
-        List<Person> persons = this.getAllPersons();
-        List<Person> list = new ArrayList<>();
-        for (Person person : persons) {
-            if (person.getCity().equals(city)) {
-                list.add(person);
-            }
-        }
-        return list;
-    }
 }

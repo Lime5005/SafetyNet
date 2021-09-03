@@ -149,6 +149,11 @@ public class DtoService {
         return list;
     }
 
+    /**
+     * Find all person covered by the fire station.
+     * @param station a station number
+     * @return An object with persons and total number for adults and children respectively.
+     */
     public FireCoverDto findPersonsByStationNumber(int station) {
         FireCoverDto fireCoverDto = new FireCoverDto();
         List<APerson> personList = new ArrayList<>();

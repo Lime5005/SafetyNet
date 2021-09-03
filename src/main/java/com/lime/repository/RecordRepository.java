@@ -52,15 +52,4 @@ public class RecordRepository {
         return Period.between(birthday, localDate).getYears();
     }
 
-    public List<Record> findAllChildren(Date birthDate) {
-        List<Record> list = new ArrayList<>();
-        for (Record medicalrecord : this.getAllRecords()) {
-            Date birthdate = medicalrecord.getBirthdate();
-            if (this.getAge(birthDate) <= 18) {
-                list.add(medicalrecord);
-            }
-        }
-        return list;
-    }
-
 }
