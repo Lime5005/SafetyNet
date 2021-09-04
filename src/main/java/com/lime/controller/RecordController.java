@@ -37,6 +37,6 @@ public class RecordController {
     public ChildAlertDto getChildrenAlert(@RequestParam String address) {
         if (recordService.findChildByAddress(address) != null) {
             return recordService.findChildByAddress(address);
-        } else return new ChildAlertDto();//Todo: return empty list.
+        } else return new ChildAlertDto();
     }
 }

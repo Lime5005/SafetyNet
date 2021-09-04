@@ -1,9 +1,11 @@
 package com.lime.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lime.domain.Person;
 
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ChildAlertDto {
     private List<AChild> children;
     private List<Person> familyMembers;
