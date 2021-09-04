@@ -1,5 +1,8 @@
 package com.lime.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Station {
     private String address;
     private int station;

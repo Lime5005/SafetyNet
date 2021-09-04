@@ -10,43 +10,21 @@ import com.lime.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
-public class DtoService {
+public class StationService {
 
     PersonRepository personRepository;
     RecordRepository recordRepository;
     StationRepository stationRepository;
 
     @Autowired
-    public DtoService(PersonRepository personRepository, RecordRepository recordRepository, StationRepository stationRepository) {
+    public StationService(PersonRepository personRepository, RecordRepository recordRepository, StationRepository stationRepository) {
         this.personRepository = personRepository;
         this.recordRepository = recordRepository;
         this.stationRepository = stationRepository;
-    }
-
-    /**
-     * Find a person with his medical records by name.
-     * @param firstName firstname.
-     * @param lastName lastname.
-     * @return Return firstName, lastName, address, age, email, and medical records.
-     */
-    public PersonInfoDto getAPersonWithRecord(String firstName, String lastName) {
-        PersonInfoDto personInfoDto = new PersonInfoDto();
-
-        Person personByName = personRepository.findPersonByName(firstName, lastName);
-        Record recordByName = recordRepository.findRecordByName(firstName, lastName);
-
-        personInfoDto.setFirstName(firstName);
-        personInfoDto.setLastName(lastName);
-        personInfoDto.setAddress(personByName.getAddress());
-        int age = recordRepository.getAge(recordByName.getBirthdate());
-        personInfoDto.setAge(age);
-        personInfoDto.setEmail(personByName.getEmail());
-        personInfoDto.setMedications(recordByName.getMedications());
-        personInfoDto.setAllergies(recordByName.getAllergies());
-        return personInfoDto;
     }
 
     /**
@@ -120,37 +98,6 @@ public class DtoService {
         fireAddressDto.setPersonWithRecordList(list);
         fireAddressDto.setStationNumbers(numbers);
         return fireAddressDto;
-    }
-
-    /**
-     * Find all children living in the address and their family members.
-     * @param address the address.
-     * @return a list of children or an empty list.
-     */
-    public ChildAlertDto findChildByAddress(String address) {
-        ChildAlertDto childAlertDto = new ChildAlertDto();
-        List<AChild> list = new ArrayList<>();
-        //1, All person living in the address:
-        List<Person> persons = personRepository.findPersonsByAddress(address);
-        List<Person> family = new ArrayList<>();
-
-        for (Person person : persons) {
-            String firstName = person.getFirstName();
-            String lastName = person.getLastName();
-            // Who are children? Find age by name:
-            int age = recordRepository.getAgeByName(firstName, lastName);
-            // Find all family members:
-            if (person.getLastName().equals(lastName)) {
-                family.add(person);
-            }
-            if (age <= 18) {
-                family.remove(person);
-                list.add(new AChild(firstName, lastName, age));
-            }
-        }
-        childAlertDto.setChildren(list);
-        childAlertDto.setFamilyMembers(family);
-        return childAlertDto;
     }
 
     /**

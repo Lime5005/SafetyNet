@@ -1,10 +1,12 @@
 package com.lime.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class Record {
     private String firstName;
     private String lastName;

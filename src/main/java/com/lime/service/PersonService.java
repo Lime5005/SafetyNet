@@ -1,36 +1,30 @@
 package com.lime.service;
 
 import com.lime.domain.Person;
-import com.lime.domain.Record;
 import com.lime.domain.Station;
 import com.lime.repository.PersonRepository;
-import com.lime.repository.RecordRepository;
 import com.lime.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 @Service
-public class SafetyNetService {
+public class PersonService {
 
     PersonRepository personRepository;
-    RecordRepository recordRepository;
     StationRepository stationRepository;
 
     @Autowired
-    public SafetyNetService(PersonRepository personRepository, RecordRepository recordRepository, StationRepository stationRepository) {
+    public PersonService(PersonRepository personRepository, StationRepository stationRepository) {
         this.personRepository = personRepository;
-        this.recordRepository = recordRepository;
         this.stationRepository = stationRepository;
     }
 
     public List<Person> getAllPersons() {
         return personRepository.getAllPersons();
-    }
-
-    public List<Record> getAllRecords() {
-        return recordRepository.getAllRecords();
     }
 
     public List<Station> getAllStations() {

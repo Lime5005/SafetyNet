@@ -1,10 +1,8 @@
 package com.lime.controller;
 
-import com.lime.controller.dto.ChildAlertDto;
-import com.lime.controller.dto.PersonInfoDto;
 import com.lime.domain.Person;
-import com.lime.service.DtoService;
-import com.lime.service.SafetyNetService;
+import com.lime.domain.Station;
+import com.lime.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,36 +16,35 @@ import java.util.List;
 @Controller
 public class PersonController {
 
-    SafetyNetService safetyNetService;
-    DtoService dtoService;
+    private final PersonService personService;
 
     @Autowired
-    public PersonController(SafetyNetService safetyNetService, DtoService dtoService) {
-        this.safetyNetService = safetyNetService;
-        this.dtoService = dtoService;
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
+
+    @ResponseBody
+    @RequestMapping("/firestations")
+    public List<Station> getStations() {
+        return personService.getAllStations();
+    }
+
+    @ResponseBody
+    @RequestMapping(path="/phoneAlert", method = RequestMethod.GET)
+    public LinkedHashSet<String> getPhones(@RequestParam int firestation) {
+        return personService.getAllPhonesByStation(firestation);
     }
 
     @ResponseBody
     @RequestMapping("/persons")
     public List<Person> getPersons() {
-         return safetyNetService.getAllPersons();
-    }
-
-    @ResponseBody
-    @RequestMapping(path="/personInfo", method = RequestMethod.GET)
-    public PersonInfoDto getPersonByName(@RequestParam String firstName, @RequestParam String lastName ) {
-        return dtoService.getAPersonWithRecord(firstName, lastName);
+         return personService.getAllPersons();
     }
 
     @ResponseBody
     @RequestMapping(path="/communityEmail", method = RequestMethod.GET)
-    public LinkedHashSet<String> getAllPhonesByCity(@RequestParam String city) {
-        return safetyNetService.getAllEmailsByCity(city);
+    public LinkedHashSet<String> getAllEmailsByCity(@RequestParam String city) {
+        return personService.getAllEmailsByCity(city);
     }
 
-    @ResponseBody
-    @RequestMapping(path = "/childAlert", method = RequestMethod.GET)
-    public ChildAlertDto getChildrenAlert(@RequestParam String address) {
-        return dtoService.findChildByAddress(address);
-    }
 }
