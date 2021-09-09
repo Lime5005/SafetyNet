@@ -1,8 +1,6 @@
 package com.lime.controller;
 
-import com.lime.controller.dto.FireAddressDto;
-import com.lime.controller.dto.FireCoverDto;
-import com.lime.controller.dto.FloodStationDto;
+import com.lime.controller.dto.*;
 import com.lime.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class StationController {
@@ -25,7 +24,7 @@ public class StationController {
 
     @ResponseBody
     @RequestMapping(path="/flood/stations", method = RequestMethod.GET)
-    public List<FloodStationDto> getPersonsByStation(@RequestParam List<Integer> stations) {
+    public Map<String, List<PersonWithRecord>> getPersonsByStation(@RequestParam List<Integer> stations) {
         return stationService.findAllPersonByStation(stations);
     }
 

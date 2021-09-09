@@ -10,8 +10,12 @@ import com.lime.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class StationService {
@@ -32,9 +36,8 @@ public class StationService {
      * @param stations station numbers in list.
      * @return a list of person with medical records.
      */
-    public List<FloodStationDto> findAllPersonByStation(List<Integer> stations) {
-        // find why it's only taking the first address in account?
-        // Because I returned the result too early in the for loop!
+    public Map<String, List<PersonWithRecord>> findAllPersonByStation(List<Integer> stations) {
+        Map<String, List<PersonWithRecord>> map;
         List<FloodStationDto> list = new ArrayList<>();
         List<Station> stationsByNumber;
         List<String> allAddresses;
@@ -61,11 +64,45 @@ public class StationService {
                     int age = recordRepository.getAge(recordByName.getBirthdate());
                     List<String> medications = recordByName.getMedications();
                     List<String> allergies = recordByName.getAllergies();
-                    list.add(new FloodStationDto(firstName, lastName, phone, address, age, medications, allergies));
+                    list.add(new FloodStationDto(address, new PersonWithRecord(firstName, lastName, phone, age, medications, allergies)));
                 }
             }
         }
-        return list;
+
+        map = getMap(list, groupAddress);
+        return map;
+    }
+
+    private static Map<String, List<PersonWithRecord>> getMap(List<FloodStationDto> list, List<String> addresses) {
+        Map<String, List<PersonWithRecord>> dtoMap = new LinkedHashMap<>();
+
+        //1, Use each address as key:
+        for (String address : addresses) {
+            //2, why all the persons are added for each address?
+            // Because the list is not re-newed each time!
+            List<PersonWithRecord> persons = new LinkedList<>();
+
+            for (FloodStationDto floodStationDto : list) {
+                if (floodStationDto.getAddress().equals(address)) {
+                    //如果地址相同，加入到新的list，每次有新地址，都要新建list:
+                    persons.add(floodStationDto.getPersonWithRecord());
+                }
+            }
+            dtoMap.put(address, persons);
+        }
+
+        // Test "stations=1,2", got 6 addresses and each address has 11 persons.
+//        for (FloodStationDto floodStationDto : list) {
+//            // 2, if address is the same, then put in map,
+//            for (String address : addresses) {
+//                if (floodStationDto.getAddress().equals(address)) {
+//                    persons.add(floodStationDto.getPersonWithRecord());
+//                    dtoMap.put(address, persons);
+//                }
+//            }
+//        }
+
+        return dtoMap;
     }
 
     /**
