@@ -34,11 +34,11 @@ public class Record {
     }
 
     public Date getBirthdate() {
-        return birthdate;
+        return new Date(birthdate.getTime());
     }
 
     public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+        this.birthdate = new Date(birthdate.getTime());
     }
 
     public List<String> getMedications() {
