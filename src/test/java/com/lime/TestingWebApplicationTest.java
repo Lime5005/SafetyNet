@@ -63,4 +63,28 @@ public class TestingWebApplicationTest {
                 .andExpect(jsonPath("$.children[1].age").value(4));
     }
 
+    @Test
+    public void getAddressesSorted_givenStations_shouldReturnPersons() throws Exception {
+        this.mockMvc.perform(get("/flood/stations?stations=1,2")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()", is(6)));
+    }
+
+    @Test
+    public void getAllPersons() throws Exception {
+        this.mockMvc.perform(get("/persons")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()", is(23)));
+    }
+
+    @Test
+    public void getAllStations() throws Exception {
+        this.mockMvc.perform(get("/firestations")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()", is(13)));
+    }
+
+    @Test
+    public void getAllRecords() throws Exception {
+        this.mockMvc.perform(get("/medicalRecords")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()", is(23)));
+    }
+
 }
