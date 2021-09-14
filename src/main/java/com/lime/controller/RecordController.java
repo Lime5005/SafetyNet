@@ -19,20 +19,17 @@ public class RecordController {
         this.recordService = recordService;
     }
 
-    @ResponseBody
     @RequestMapping("/medicalRecords")
     public List<Record> getRecords() {
         List<Record> medicalrecords = recordService.getAllRecords();
         return medicalrecords;
     }
 
-    @ResponseBody
     @RequestMapping(path="/personInfo", method = RequestMethod.GET)
     public PersonInfoDto getPersonByName(@RequestParam String firstName, @RequestParam String lastName ) {
         return recordService.getAPersonWithRecord(firstName, lastName);
     }
-
-    @ResponseBody
+    
     @RequestMapping(path = "/childAlert", method = RequestMethod.GET)
     public ChildAlertDto getChildrenAlert(@RequestParam String address) {
         if (recordService.findChildByAddress(address) != null) {

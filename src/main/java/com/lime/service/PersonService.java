@@ -75,4 +75,15 @@ public class PersonService {
         return phones;
     }
 
+    public Boolean createPerson(Person person) {
+        return personRepository.savePerson(person);
+    }
+
+    public Boolean updatePerson(Person person) {
+        return personRepository.updatePerson(person);
+    }
+
+    public Boolean deletePerson(Person person) {
+        return personRepository.deletePerson(person);
+    }
 }

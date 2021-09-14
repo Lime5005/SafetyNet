@@ -43,4 +43,45 @@ public class PersonRepository {
         return list;
     }
 
+    public Boolean savePerson(Person person) {
+        if (person.getFirstName() != null && person.getLastName() != null) {
+            for (Person aPerson : this.getAllPersons()) {
+                if (!person.getFirstName().equals(aPerson.getFirstName())
+                        && !person.getLastName().equals(aPerson.getLastName())) {
+                    return this.getAllPersons().add(person);
+                }
+            }
+        }
+        return false;
+    }
+
+    public Boolean updatePerson(Person person) {
+        if (person.getFirstName() != null && person.getLastName() != null) {
+            for (Person aPerson : this.getAllPersons()) {
+                if (person.getFirstName().equals(aPerson.getFirstName())
+                        && person.getLastName().equals(aPerson.getLastName())) {
+                    aPerson.setAddress(person.getAddress());
+                    aPerson.setCity(person.getCity());
+                    aPerson.setZip(person.getZip());
+                    aPerson.setPhone(person.getPhone());
+                    aPerson.setEmail(person.getEmail());
+                }
+                return this.getAllPersons().add(aPerson);
+            }
+        }
+        return false;
+    }
+
+    public Boolean deletePerson(Person person) {
+        if (person.getFirstName() != null && person.getLastName() != null) {
+            for (Person aPerson : this.getAllPersons()) {
+                if (person.getFirstName().equals(aPerson.getFirstName())
+                        && person.getLastName().equals(aPerson.getLastName())) {
+                    return this.getAllPersons().remove(aPerson);
+                }
+            }
+        }
+        return false;
+    }
+
 }
