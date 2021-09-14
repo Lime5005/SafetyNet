@@ -91,17 +91,6 @@ public class StationService {
             dtoMap.put(address, persons);
         }
 
-        // Test "stations=1,2", got 6 addresses and each address has 11 persons.
-//        for (FloodStationDto floodStationDto : list) {
-//            // 2, if address is the same, then put in map,
-//            for (String address : addresses) {
-//                if (floodStationDto.getAddress().equals(address)) {
-//                    persons.add(floodStationDto.getPersonWithRecord());
-//                    dtoMap.put(address, persons);
-//                }
-//            }
-//        }
-
         return dtoMap;
     }
 
@@ -171,6 +160,22 @@ public class StationService {
         fireCoverDto.setTotal_child(total_child);
 
         return fireCoverDto;
+    }
+
+    public List<Station> getAllStations() {
+        return stationRepository.getAllStations();
+    }
+
+    public Boolean addStation(Station station) {
+        return stationRepository.saveStation(station);
+    }
+
+    public Boolean updateStation(Station station) {
+        return stationRepository.updateStation(station);
+    }
+
+    public Boolean deleteStation(Station station) {
+        return stationRepository.deleteStation(station);
     }
 
 }

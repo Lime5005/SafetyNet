@@ -54,4 +54,41 @@ public class StationRepository {
         }
         return list;
     }
+
+    public Boolean saveStation(Station station) {
+        if (station.getAddress() != null) {
+            for (Station aStation : this.getAllStations()) {
+                if ( !station.getAddress().equals(aStation.getAddress()) || station.getStation() != aStation.getStation()) {
+                    return this.getAllStations().add(station);
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    public Boolean updateStation(Station station) {
+        if (station.getAddress() != null) {
+            for (Station aStation : this.getAllStations()) {
+                if (station.getAddress().equals(aStation.getAddress()) &&
+                        station.getStation() != aStation.getStation()) {
+                    aStation.setStation(station.getStation());
+                    return this.getAllStations().add(aStation);
+                }
+            }
+        }
+        return false;
+    }
+
+    public Boolean deleteStation(Station station) {
+        if (station.getAddress() != null) {
+            for (Station aStation : this.getAllStations()) {
+                if (station.getAddress().equals(aStation.getAddress())) {
+                    return this.getAllStations().remove(aStation);
+                }
+            }
+        }
+        return false;
+    }
 }

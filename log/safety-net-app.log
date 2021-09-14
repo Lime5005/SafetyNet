@@ -11,3 +11,81 @@
 2021-09-14 16:05:27.473  === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-09-14 16:05:27.475  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Initializing Servlet 'dispatcherServlet'
 2021-09-14 16:05:27.481  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Completed initialization in 6 ms
+2021-09-14 17:03:09.917  === [main] === INFO  === com.lime.SafetyNetApp ===  Starting SafetyNetApp using Java 16.0.2 on limes-macbook-pro.home with PID 74089 (/Users/lime/IdeaProjects/SafetyNet/target/classes started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-14 17:03:09.920  === [main] === DEBUG === com.lime.SafetyNetApp ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-14 17:03:09.921  === [main] === INFO  === com.lime.SafetyNetApp ===  No active profile set, falling back to default profiles: default
+2021-09-14 17:03:11.652  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat initialized with port(s): 8080 (http)
+2021-09-14 17:03:11.661  === [main] === INFO  === org.apache.catalina.core.StandardService ===  Starting service [Tomcat]
+2021-09-14 17:03:11.661  === [main] === INFO  === org.apache.catalina.core.StandardEngine ===  Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-14 17:03:11.782  === [main] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring embedded WebApplicationContext
+2021-09-14 17:03:11.783  === [main] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ===  Root WebApplicationContext: initialization completed in 1563 ms
+2021-09-14 17:03:13.280  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-14 17:03:13.296  === [main] === INFO  === com.lime.SafetyNetApp ===  Started SafetyNetApp in 4.001 seconds (JVM running for 5.06)
+2021-09-14 17:03:40.660  === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-14 17:03:40.662  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Initializing Servlet 'dispatcherServlet'
+2021-09-14 17:03:40.666  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Completed initialization in 4 ms
+2021-09-14 17:11:00.131  === [main] === INFO  === com.lime.SafetyNetApp ===  Starting SafetyNetApp using Java 16.0.2 on limes-macbook-pro.home with PID 74200 (/Users/lime/IdeaProjects/SafetyNet/target/classes started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-14 17:11:00.133  === [main] === DEBUG === com.lime.SafetyNetApp ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-14 17:11:00.134  === [main] === INFO  === com.lime.SafetyNetApp ===  No active profile set, falling back to default profiles: default
+2021-09-14 17:11:01.968  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat initialized with port(s): 8080 (http)
+2021-09-14 17:11:01.981  === [main] === INFO  === org.apache.catalina.core.StandardService ===  Starting service [Tomcat]
+2021-09-14 17:11:01.981  === [main] === INFO  === org.apache.catalina.core.StandardEngine ===  Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-14 17:11:02.127  === [main] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring embedded WebApplicationContext
+2021-09-14 17:11:02.127  === [main] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ===  Root WebApplicationContext: initialization completed in 1749 ms
+2021-09-14 17:11:03.529  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-14 17:11:03.543  === [main] === INFO  === com.lime.SafetyNetApp ===  Started SafetyNetApp in 4.025 seconds (JVM running for 5.003)
+2021-09-14 17:11:19.939  === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-14 17:11:19.940  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Initializing Servlet 'dispatcherServlet'
+2021-09-14 17:11:19.948  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Completed initialization in 8 ms
+2021-09-14 17:46:42.294  === [main] === INFO  === com.lime.SafetyNetApp ===  Starting SafetyNetApp using Java 16.0.2 on limes-macbook-pro.home with PID 74584 (/Users/lime/IdeaProjects/SafetyNet/target/classes started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-14 17:46:42.297  === [main] === DEBUG === com.lime.SafetyNetApp ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-14 17:46:42.297  === [main] === INFO  === com.lime.SafetyNetApp ===  No active profile set, falling back to default profiles: default
+2021-09-14 17:46:44.091  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat initialized with port(s): 8080 (http)
+2021-09-14 17:46:44.099  === [main] === INFO  === org.apache.catalina.core.StandardService ===  Starting service [Tomcat]
+2021-09-14 17:46:44.099  === [main] === INFO  === org.apache.catalina.core.StandardEngine ===  Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-14 17:46:44.224  === [main] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring embedded WebApplicationContext
+2021-09-14 17:46:44.225  === [main] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ===  Root WebApplicationContext: initialization completed in 1775 ms
+2021-09-14 17:46:45.798  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-14 17:46:45.815  === [main] === INFO  === com.lime.SafetyNetApp ===  Started SafetyNetApp in 4.164 seconds (JVM running for 5.071)
+2021-09-14 17:46:58.764  === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-14 17:46:58.765  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Initializing Servlet 'dispatcherServlet'
+2021-09-14 17:46:58.769  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Completed initialization in 4 ms
+2021-09-14 17:50:43.303  === [main] === INFO  === com.lime.SafetyNetApp ===  Starting SafetyNetApp using Java 16.0.2 on limes-macbook-pro.home with PID 74647 (/Users/lime/IdeaProjects/SafetyNet/target/classes started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-14 17:50:43.306  === [main] === DEBUG === com.lime.SafetyNetApp ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-14 17:50:43.307  === [main] === INFO  === com.lime.SafetyNetApp ===  No active profile set, falling back to default profiles: default
+2021-09-14 17:50:44.898  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat initialized with port(s): 8080 (http)
+2021-09-14 17:50:44.910  === [main] === INFO  === org.apache.catalina.core.StandardService ===  Starting service [Tomcat]
+2021-09-14 17:50:44.910  === [main] === INFO  === org.apache.catalina.core.StandardEngine ===  Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-14 17:50:45.043  === [main] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring embedded WebApplicationContext
+2021-09-14 17:50:45.044  === [main] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ===  Root WebApplicationContext: initialization completed in 1591 ms
+2021-09-14 17:50:46.600  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-14 17:50:46.621  === [main] === INFO  === com.lime.SafetyNetApp ===  Started SafetyNetApp in 4.01 seconds (JVM running for 4.946)
+2021-09-14 17:50:53.105  === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-14 17:50:53.106  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Initializing Servlet 'dispatcherServlet'
+2021-09-14 17:50:53.111  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Completed initialization in 5 ms
+2021-09-14 17:53:00.378  === [main] === INFO  === com.lime.SafetyNetApp ===  Starting SafetyNetApp using Java 16.0.2 on limes-macbook-pro.home with PID 74674 (/Users/lime/IdeaProjects/SafetyNet/target/classes started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-14 17:53:00.381  === [main] === DEBUG === com.lime.SafetyNetApp ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-14 17:53:00.382  === [main] === INFO  === com.lime.SafetyNetApp ===  No active profile set, falling back to default profiles: default
+2021-09-14 17:53:02.009  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat initialized with port(s): 8080 (http)
+2021-09-14 17:53:02.018  === [main] === INFO  === org.apache.catalina.core.StandardService ===  Starting service [Tomcat]
+2021-09-14 17:53:02.019  === [main] === INFO  === org.apache.catalina.core.StandardEngine ===  Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-14 17:53:02.128  === [main] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring embedded WebApplicationContext
+2021-09-14 17:53:02.128  === [main] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ===  Root WebApplicationContext: initialization completed in 1531 ms
+2021-09-14 17:53:03.618  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-14 17:53:03.633  === [main] === INFO  === com.lime.SafetyNetApp ===  Started SafetyNetApp in 4.051 seconds (JVM running for 5.268)
+2021-09-14 17:53:21.015  === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-14 17:53:21.017  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Initializing Servlet 'dispatcherServlet'
+2021-09-14 17:53:21.022  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Completed initialization in 5 ms
+2021-09-14 17:53:43.480  === [main] === INFO  === com.lime.SafetyNetApp ===  Starting SafetyNetApp using Java 16.0.2 on limes-macbook-pro.home with PID 74688 (/Users/lime/IdeaProjects/SafetyNet/target/classes started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-14 17:53:43.485  === [main] === DEBUG === com.lime.SafetyNetApp ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-14 17:53:43.486  === [main] === INFO  === com.lime.SafetyNetApp ===  No active profile set, falling back to default profiles: default
+2021-09-14 17:53:45.023  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat initialized with port(s): 8080 (http)
+2021-09-14 17:53:45.032  === [main] === INFO  === org.apache.catalina.core.StandardService ===  Starting service [Tomcat]
+2021-09-14 17:53:45.032  === [main] === INFO  === org.apache.catalina.core.StandardEngine ===  Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-14 17:53:45.164  === [main] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring embedded WebApplicationContext
+2021-09-14 17:53:45.164  === [main] === INFO  === o.s.b.w.s.c.ServletWebServerApplicationContext ===  Root WebApplicationContext: initialization completed in 1531 ms
+2021-09-14 17:53:46.661  === [main] === INFO  === o.s.boot.web.embedded.tomcat.TomcatWebServer ===  Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-14 17:53:46.679  === [main] === INFO  === com.lime.SafetyNetApp ===  Started SafetyNetApp in 3.985 seconds (JVM running for 5.274)
+2021-09-14 17:53:49.552  === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-14 17:53:49.554  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Initializing Servlet 'dispatcherServlet'
+2021-09-14 17:53:49.558  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Completed initialization in 4 ms

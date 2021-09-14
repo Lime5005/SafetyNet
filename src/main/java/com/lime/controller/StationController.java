@@ -1,6 +1,7 @@
 package com.lime.controller;
 
 import com.lime.controller.dto.*;
+import com.lime.domain.Station;
 import com.lime.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +32,25 @@ public class StationController {
     @RequestMapping(path = "/firestation", method = RequestMethod.GET)
     public FireCoverDto getPersonsByStationNumber(@RequestParam int stationNumber) {
         return stationService.findPersonsByStationNumber(stationNumber);
+    }
+
+    @GetMapping(path = "/firestations")
+    public List<Station> getAllStations() {
+        return stationService.getAllStations();
+    }
+    
+    @PostMapping(path = "/firestations")
+    public Boolean addStation(@RequestBody Station station) {
+        return stationService.addStation(station);
+    }
+
+    @PutMapping(path = "/firestations")
+    public Boolean updateStation(@RequestBody Station station) {
+        return stationService.updateStation(station);
+    }
+
+    @DeleteMapping(path = "/firestations")
+    public Boolean deleteStation(@RequestBody Station station) {
+        return stationService.deleteStation(station);
     }
 }
