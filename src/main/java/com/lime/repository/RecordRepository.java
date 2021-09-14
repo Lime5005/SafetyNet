@@ -49,4 +49,45 @@ public class RecordRepository {
         return Period.between(birthday, localDate).getYears();
     }
 
+    // Add a new record:
+    public Boolean saveRecord(Record record) {
+        if (record.getFirstName() != null && record.getLastName() != null) {
+            for (Record aRecord : this.getAllRecords()) {
+                if (record.getFirstName().equals(aRecord.getFirstName())
+                && record.getLastName().equals(aRecord.getLastName())) {
+                    return false;
+                } else {
+                    return this.getAllRecords().add(record);
+                }
+            }
+        }
+        return false;
+    }
+
+    public Boolean updateRecord(Record record) {
+        if (record.getFirstName() != null && record.getLastName() != null) {
+            for (Record medicalrecord : this.getAllRecords()) {
+                if (medicalrecord.getFirstName().equals(record.getFirstName())
+                        && medicalrecord.getLastName().equals(record.getLastName())) {
+                    medicalrecord.setBirthdate(record.getBirthdate());
+                    medicalrecord.setMedications(record.getMedications());
+                    medicalrecord.setAllergies(record.getAllergies());
+                    return this.getAllRecords().add(medicalrecord);
+                }
+            }
+        }
+        return false;
+    }
+
+    public Boolean deleteRecord(Record record) {
+        if (record.getFirstName() != null && record.getLastName() != null) {
+            for (Record medicalrecord : this.getAllRecords()) {
+                if (medicalrecord.getFirstName().equals(record.getFirstName())
+                        && medicalrecord.getLastName().equals(record.getLastName())) {
+                    return this.getAllRecords().remove(medicalrecord);
+                }
+            }
+        }
+        return false;
+    }
 }

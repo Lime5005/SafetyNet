@@ -46,8 +46,10 @@ public class PersonRepository {
     public Boolean savePerson(Person person) {
         if (person.getFirstName() != null && person.getLastName() != null) {
             for (Person aPerson : this.getAllPersons()) {
-                if (!person.getFirstName().equals(aPerson.getFirstName())
-                        && !person.getLastName().equals(aPerson.getLastName())) {
+                if (person.getFirstName().equals(aPerson.getFirstName())
+                        && person.getLastName().equals(aPerson.getLastName())) {
+                    return false;
+                } else {
                     return this.getAllPersons().add(person);
                 }
             }
@@ -65,8 +67,8 @@ public class PersonRepository {
                     aPerson.setZip(person.getZip());
                     aPerson.setPhone(person.getPhone());
                     aPerson.setEmail(person.getEmail());
+                    return this.getAllPersons().add(aPerson);
                 }
-                return this.getAllPersons().add(aPerson);
             }
         }
         return false;

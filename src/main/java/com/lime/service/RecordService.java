@@ -84,4 +84,15 @@ public class RecordService {
         return childAlertDto;
     }
 
+    public Boolean addRecord(Record record) {
+        return recordRepository.saveRecord(record);
+    }
+
+    public Boolean updateRecord(Record record) {
+        return recordRepository.updateRecord(record);
+    }
+
+    public Boolean deleteRecord(Record record) {
+        return recordRepository.deleteRecord(record);
+    }
 }
