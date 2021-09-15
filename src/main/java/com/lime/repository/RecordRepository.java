@@ -49,7 +49,11 @@ public class RecordRepository {
         return Period.between(birthday, localDate).getYears();
     }
 
-    // Add a new record:
+    /**
+     * If a person has not been recorded yet, add to the records list, otherwise return false.
+     * @param record A Record object.
+     * @return true if added successfully, or false if failed.
+     */
     public Boolean saveRecord(Record record) {
         if (record.getFirstName() != null && record.getLastName() != null) {
             for (Record aRecord : this.getAllRecords()) {
@@ -64,6 +68,11 @@ public class RecordRepository {
         return false;
     }
 
+    /**
+     * Update a record, if the person has a record with unique firstName and lastName.
+     * @param record A Record object.
+     * @return true if updated successfully, or false if failed.
+     */
     public Boolean updateRecord(Record record) {
         if (record.getFirstName() != null && record.getLastName() != null) {
             for (Record medicalrecord : this.getAllRecords()) {
@@ -79,6 +88,11 @@ public class RecordRepository {
         return false;
     }
 
+    /**
+     * Delete a record, if the record exists for the person by checking the name.
+     * @param record A Record object.
+     * @return true if deleted successfully, or false if failed.
+     */
     public Boolean deleteRecord(Record record) {
         if (record.getFirstName() != null && record.getLastName() != null) {
             for (Record medicalrecord : this.getAllRecords()) {

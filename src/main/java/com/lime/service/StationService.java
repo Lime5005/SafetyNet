@@ -68,13 +68,17 @@ public class StationService {
         return map;
     }
 
+    /**
+     * Sort a list of PersonWithRecords by their addresses.
+     * @param list FloodStationDto.
+     * @param addresses addresses of these persons.
+     * @return A map with key: address, value: a list of persons living in the same address.
+     */
     private static Map<String, List<PersonWithRecord>> getMap(List<FloodStationDto> list, List<String> addresses) {
         Map<String, List<PersonWithRecord>> dtoMap = new LinkedHashMap<>();
 
         //1, Use each address as key:
         for (String address : addresses) {
-            //2, why all the persons are added for each address?
-            // Because the list is not re-newed each time!
             List<PersonWithRecord> persons = new LinkedList<>();
 
             for (FloodStationDto floodStationDto : list) {

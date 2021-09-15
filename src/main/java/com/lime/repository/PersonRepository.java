@@ -43,6 +43,11 @@ public class PersonRepository {
         return list;
     }
 
+    /**
+     * If a person does not exist yet in the db, by checking the unique firstName and lastName, then add it.
+     * @param person A Person Object.
+     * @return true if success, or false if failed.
+     */
     public Boolean savePerson(Person person) {
         if (person.getFirstName() != null && person.getLastName() != null) {
             for (Person aPerson : this.getAllPersons()) {
@@ -57,6 +62,11 @@ public class PersonRepository {
         return false;
     }
 
+    /**
+     * Use person's firstName and lastName to identify, if person exists, update it.
+     * @param person A Person object.
+     * @return true if success, or false if failed.
+     */
     public Boolean updatePerson(Person person) {
         if (person.getFirstName() != null && person.getLastName() != null) {
             for (Person aPerson : this.getAllPersons()) {
@@ -74,6 +84,11 @@ public class PersonRepository {
         return false;
     }
 
+    /**
+     * Use firstName and lastName as identifier to locate a person and delete it.
+     * @param person A Person object.
+     * @return true if success, or false if failed.
+     */
     public Boolean deletePerson(Person person) {
         if (person.getFirstName() != null && person.getLastName() != null) {
             for (Person aPerson : this.getAllPersons()) {

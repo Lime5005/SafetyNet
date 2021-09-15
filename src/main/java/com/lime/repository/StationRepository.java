@@ -55,6 +55,11 @@ public class StationRepository {
         return list;
     }
 
+    /**
+     * Create a new station if it does not exist yet, by checking both the address and the station number.
+     * @param station A Station object.
+     * @return true if added successfully, or false if failed.
+     */
     public Boolean save(Station station) {
         if (station.getAddress() != null) {
             for (Station aStation : this.getAllStations()) {
@@ -66,6 +71,11 @@ public class StationRepository {
         return false;
     }
 
+    /**
+     * Update a station number for an address.
+     * @param station A Station object.
+     * @return true if updated successfully, or false if failed.
+     */
     public Boolean updateStation(Station station) {
         if (station.getAddress() != null) {
             for (Station aStation : this.getAllStations()) {
@@ -79,6 +89,11 @@ public class StationRepository {
         return false;
     }
 
+    /**
+     * Delete a station by its address.
+     * @param station A Station object.
+     * @return true if deleted successfully, or false if failed.
+     */
     public Boolean deleteStation(Station station) {
         if (station.getAddress() != null) {
             for (Station aStation : this.getAllStations()) {
