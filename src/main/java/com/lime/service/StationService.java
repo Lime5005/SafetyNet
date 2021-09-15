@@ -167,7 +167,7 @@ public class StationService {
     }
 
     public Boolean addStation(Station station) {
-        return stationRepository.saveStation(station);
+        return stationRepository.save(station);
     }
 
     public Boolean updateStation(Station station) {

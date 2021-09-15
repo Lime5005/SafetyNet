@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashSet;
 import java.util.List;
+
 // @RestController = @Controller + @ResponseBody(return data to browser, or json if object)
 @RestController
 public class PersonController {
@@ -19,14 +20,14 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @RequestMapping("/firestations")
-    public List<Station> getStations() {
-        return personService.getAllStations();
-    }
-
     @RequestMapping(path="/phoneAlert", method = RequestMethod.GET)
     public LinkedHashSet<String> getPhones(@RequestParam int firestation) {
         return personService.getAllPhonesByStation(firestation);
+    }
+
+    @RequestMapping(path="/communityEmail", method = RequestMethod.GET)
+    public LinkedHashSet<String> getAllEmailsByCity(@RequestParam String city) {
+        return personService.getAllEmailsByCity(city);
     }
 
     @GetMapping("/persons")
@@ -48,12 +49,6 @@ public class PersonController {
     @DeleteMapping(path = "/persons")
     public Boolean deletePerson(@RequestBody Person person) {
         return personService.deletePerson(person);
-    }
-
-
-    @RequestMapping(path="/communityEmail", method = RequestMethod.GET)
-    public LinkedHashSet<String> getAllEmailsByCity(@RequestParam String city) {
-        return personService.getAllEmailsByCity(city);
     }
 
 }

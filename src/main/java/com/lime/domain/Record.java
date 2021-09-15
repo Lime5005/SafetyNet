@@ -14,6 +14,17 @@ public class Record {
     @JsonFormat(pattern = "MM/dd/yyyy")
     private Date birthdate;
 
+    public Record() {
+    }
+
+    public Record(String firstName, String lastName, Date birthdate, List<String> medications, List<String> allergies) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthdate = new Date(birthdate.getTime());
+        this.medications = medications;
+        this.allergies = allergies;
+    }
+
     private List<String> medications;
     private List<String> allergies;
 

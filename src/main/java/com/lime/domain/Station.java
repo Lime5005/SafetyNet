@@ -7,6 +7,14 @@ public class Station {
     private String address;
     private int station;
 
+    public Station() {
+    }
+
+    public Station(String address, int station) {
+        this.address = address;
+        this.station = station;
+    }
+
     public String getAddress() {
         return address;
     }

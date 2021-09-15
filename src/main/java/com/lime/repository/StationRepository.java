@@ -55,13 +55,11 @@ public class StationRepository {
         return list;
     }
 
-    public Boolean saveStation(Station station) {
+    public Boolean save(Station station) {
         if (station.getAddress() != null) {
             for (Station aStation : this.getAllStations()) {
-                if ( !station.getAddress().equals(aStation.getAddress()) || station.getStation() != aStation.getStation()) {
+                if ( !station.getAddress().equals(aStation.getAddress()) && station.getStation() != aStation.getStation()) {
                     return this.getAllStations().add(station);
-                } else {
-                    return false;
                 }
             }
         }
