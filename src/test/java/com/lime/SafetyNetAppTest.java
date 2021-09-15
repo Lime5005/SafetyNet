@@ -2,22 +2,26 @@ package com.lime;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lime.domain.Person;
+import com.lime.domain.Record;
+import com.lime.domain.Station;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import static org.hamcrest.Matchers.*;
+
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -25,6 +29,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class SafetyNetAppTest {
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Test
     public void getAllEmails_givenCity_shouldReturnAList() throws Exception {
@@ -67,88 +74,145 @@ public class SafetyNetAppTest {
 
     }
 
-
-
     @Test
     public void getAddressesSorted_givenStations_shouldReturnPersons() throws Exception {
-        this.mockMvc.perform(get("/flood/stations?stations=1,2")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()", is(6)));
+        this.mockMvc.perform(get("/flood/stations?stations=1")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()", is(3)));
     }
 
     @Test
-    public void getAllPersons() throws Exception {
-        this.mockMvc.perform(get("/persons")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()", is(23)));
+    public void getChildren_givenAddress_shouldReturnChildAndParents() throws Exception {
+        this.mockMvc.perform(get("/childAlert?address=892 Downing Ct")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.children[0].age").value(4))
+                .andExpect(jsonPath("$.children.length()", is(1)))
+                .andExpect(jsonPath("$.familyMembers.length()", is(2)));
     }
 
     @Test
-    public void getAllStations() throws Exception {
-        this.mockMvc.perform(get("/firestations")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()", is(13)));
-    }
-
-    @Test
-    public void getAllRecords() throws Exception {
-        this.mockMvc.perform(get("/medicalRecords")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()", is(23)));
-    }
-
-    @Test
-    public void createPerson_withPerson_shouldReturnBoolean() throws Exception {
+    public void createPerson_withAPerson_shouldReturnOk() throws Exception {
         Person person = new Person("Lili", "Rose", "1509 Culver St", "Culver", "97451", "841-874-6512", "lili@email.com");
-        this.mockMvc.perform( MockMvcRequestBuilders
+        mockMvc.perform( MockMvcRequestBuilders
                         .post("/persons")
-                        .content(asJsonString(person))
+                        .content(objectMapper.writeValueAsString(person))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()) //andExpect(status().isCreated())?
-                .andDo(MockMvcResultHandlers.print());
+                .andExpect(status().isOk())
+                .andReturn();
     }
 
     @Test
-    public void updatePerson_withWrongPerson_shouldReturnFalse() throws Exception {
-        Person person = new Person("AAA", "BBB", "1000 Culver St", "Culver", "97451", "111-999-0000", "boyd@email.com");
-        this.mockMvc.perform(MockMvcRequestBuilders
+    public void deletePerson_withAPerson_shouldReturnOk() throws Exception {
+        Person person = new Person("Clive", "Ferguson", "748 Townings Dr", "Culver", "97451", "841-874-6741", "clivfd@ymail.com");
+        mockMvc.perform(MockMvcRequestBuilders.delete("/persons")
+                        .content(objectMapper.writeValueAsString(person))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void updatePerson_withAPerson_shouldReturnOk() throws Exception {
+        Person person = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver", "97451", "841-874-7458", "gramps@email.com");
+        mockMvc.perform( MockMvcRequestBuilders
                         .put("/persons")
-                        .content(asJsonString(person))
+                        .content(objectMapper.writeValueAsString(person))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string("false"));
+                .andReturn();
     }
 
     @Test
-    public void deletePerson_withPerson_shouldReturnTrue() throws Exception {
-        Person person = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
-        this.mockMvc.perform(MockMvcRequestBuilders.delete("/persons")
-                        .content(asJsonString(person))
+    public void addStation_withAStation_shouldReturnOk() throws Exception {
+        Station station = new Station("29 15th St", 5);
+        MockHttpServletResponse response = mockMvc.perform( MockMvcRequestBuilders
+                        .post("/firestations")
+                        .content(objectMapper.writeValueAsString(station))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string("true"));
+                .andReturn()
+                .getResponse();
+//        System.out.println(response.getContentAsString()); //false
     }
 
     @Test
-    public void deletePerson_withWrongPerson_shouldReturnfalse() throws Exception {
-        Person person = new Person("PPP", "LLL", "1509 Culver St", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
-        this.mockMvc.perform(MockMvcRequestBuilders.delete("/persons")
-                        .content(asJsonString(person))
+    public void updateStationNum_withStation_shouldReturnOk() throws Exception {
+        Station station = new Station("489 Manchester St", 8);
+        mockMvc.perform( MockMvcRequestBuilders
+                        .put("/firestations")
+                        .content(objectMapper.writeValueAsString(station))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string("false"));
+                .andReturn();
     }
 
+    @Test
+    public void deleteStation_withStation_shouldReturnOk() throws Exception {
+        Station station = new Station("951 LoneTree Rd", 2);
+        mockMvc.perform( MockMvcRequestBuilders
+                        .delete("/firestations")
+                        .content(objectMapper.writeValueAsString(station))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+    }
 
+    @Test
+    public void createRecord_withARecord_shouldReturnOk() throws Exception {
+        List<String> medications = new ArrayList<>();
+        medications.add("\"aznol:350mg\"");
+        medications.add("hydrapermazol:100mg");
+        List<String> allergies = new ArrayList<>();
+        allergies.add("nillacilan");
+        Record record = new Record( "SSS", "DDD", new SimpleDateFormat( "yyyyMMdd" ).parse( "19840306" ), medications, allergies);
+        MockHttpServletResponse response = mockMvc.perform( MockMvcRequestBuilders
+                        .post("/medicalRecords")
+                        .content(objectMapper.writeValueAsString(record))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+    }
 
+    @Test
+    public void updateRecord_withARecord_shouldReturnOk() throws Exception {
+        List<String> medications = new ArrayList<>();
+        medications.add("\"aznol:350mg\"");
+        medications.add("hydrapermazol:100mg");
+        List<String> allergies = new ArrayList<>();
+        allergies.add("");
+        Record record = new Record( "John", "Boyd", new SimpleDateFormat( "yyyyMMdd" ).parse( "19840306" ), medications, allergies);
+        MockHttpServletResponse response = mockMvc.perform( MockMvcRequestBuilders
+                        .put("/medicalRecords")
+                        .content(objectMapper.writeValueAsString(record))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+    }
 
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    @Test
+    public void deleteRecord_withARecord_shouldReturnOk() throws Exception {
+        List<String> medications = new ArrayList<>();
+        medications.add("\"aznol:350mg\"");
+        medications.add("hydrapermazol:100mg");
+        List<String> allergies = new ArrayList<>();
+        allergies.add("");
+        Record record = new Record( "Eric", "Cadigan", new SimpleDateFormat( "yyyyMMdd" ).parse( "19840306" ), medications, allergies);
+        MockHttpServletResponse response = mockMvc.perform( MockMvcRequestBuilders
+                        .delete("/medicalRecords")
+                        .content(objectMapper.writeValueAsString(record))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
     }
 
 }
