@@ -72,7 +72,7 @@ public class RecordRepository {
                     medicalrecord.setBirthdate(record.getBirthdate());
                     medicalrecord.setMedications(record.getMedications());
                     medicalrecord.setAllergies(record.getAllergies());
-                    return this.getAllRecords().add(medicalrecord);
+                    return true;
                 }
             }
         }

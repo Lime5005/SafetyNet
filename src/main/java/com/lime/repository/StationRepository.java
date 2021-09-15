@@ -74,7 +74,7 @@ public class StationRepository {
                 if (station.getAddress().equals(aStation.getAddress()) &&
                         station.getStation() != aStation.getStation()) {
                     aStation.setStation(station.getStation());
-                    return this.getAllStations().add(aStation);
+                    return true;
                 }
             }
         }

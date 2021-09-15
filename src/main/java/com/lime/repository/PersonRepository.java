@@ -67,7 +67,7 @@ public class PersonRepository {
                     aPerson.setZip(person.getZip());
                     aPerson.setPhone(person.getPhone());
                     aPerson.setEmail(person.getEmail());
-                    return this.getAllPersons().add(aPerson);
+                    return true;
                 }
             }
         }
