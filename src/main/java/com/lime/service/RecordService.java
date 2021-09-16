@@ -39,7 +39,7 @@ public class RecordService {
 
         Person personByName = personRepository.findPersonByName(firstName, lastName);
         Record recordByName = recordRepository.findRecordByName(firstName, lastName);
-
+        if (personByName == null || recordByName == null) return null;
         personInfoDto.setFirstName(firstName);
         personInfoDto.setLastName(lastName);
         personInfoDto.setAddress(personByName.getAddress());

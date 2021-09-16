@@ -1,11 +1,13 @@
 package com.lime.controller;
 
 import com.lime.controller.dto.ChildAlertDto;
+import com.lime.controller.dto.EmptyJsonResponse;
 import com.lime.controller.dto.PersonInfoDto;
 import com.lime.domain.Record;
 import com.lime.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +29,19 @@ public class RecordController {
     }
 
     @RequestMapping(path="/personInfo", method = RequestMethod.GET)
-    public PersonInfoDto getPersonByName(@RequestParam String firstName, @RequestParam String lastName ) {
-        return recordService.getAPersonWithRecord(firstName, lastName);
+    public ResponseEntity<Object> getPersonByName(@RequestParam String firstName, @RequestParam String lastName ) {
+        PersonInfoDto withRecord = recordService.getAPersonWithRecord(firstName, lastName);
+        if (withRecord != null) {
+            return new ResponseEntity<>(withRecord, HttpStatus.OK);
+        } else return new ResponseEntity<>(new EmptyJsonResponse(), HttpStatus.NOT_FOUND);
     }
     
     @RequestMapping(path = "/childAlert", method = RequestMethod.GET)
-    public ChildAlertDto getChildrenAlert(@RequestParam String address) {
-        if (recordService.findChildByAddress(address) != null) {
-            return recordService.findChildByAddress(address);
-        } else return new ChildAlertDto();
+    public ResponseEntity<Object> getChildrenAlert(@RequestParam String address) {
+        ChildAlertDto child = recordService.findChildByAddress(address);
+        if (child != null) {
+            return new ResponseEntity<>(child, HttpStatus.OK);
+        } else return new ResponseEntity<>(new EmptyJsonResponse(), HttpStatus.NOT_FOUND);
     }
 
     @PostMapping(path = "/medicalRecords")

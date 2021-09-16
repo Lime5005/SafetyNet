@@ -1,9 +1,12 @@
 package com.lime.controller;
 
+import com.lime.controller.dto.EmptyJsonResponse;
 import com.lime.domain.Person;
 import com.lime.domain.Station;
 import com.lime.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashSet;
@@ -21,13 +24,19 @@ public class PersonController {
     }
 
     @RequestMapping(path="/phoneAlert", method = RequestMethod.GET)
-    public LinkedHashSet<String> getPhones(@RequestParam int firestation) {
-        return personService.getAllPhonesByStation(firestation);
+    public ResponseEntity<Object> getPhones(@RequestParam int firestation) {
+        LinkedHashSet<String> phones = personService.getAllPhonesByStation(firestation);
+        if (phones != null) {
+            return new ResponseEntity<>(phones, HttpStatus.OK);
+        } else return new ResponseEntity<>(new EmptyJsonResponse(), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path="/communityEmail", method = RequestMethod.GET)
-    public LinkedHashSet<String> getAllEmailsByCity(@RequestParam String city) {
-        return personService.getAllEmailsByCity(city);
+    public ResponseEntity<Object> getAllEmailsByCity(@RequestParam String city) {
+        LinkedHashSet<String> emails = personService.getAllEmailsByCity(city);
+        if (emails != null) {
+            return new ResponseEntity<>(emails, HttpStatus.OK);
+        } else return new ResponseEntity<>(new EmptyJsonResponse(), HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/persons")

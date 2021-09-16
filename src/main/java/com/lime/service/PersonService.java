@@ -43,6 +43,7 @@ public class PersonService {
                 list.add(person.getEmail());
             }
         }
+        if (list.isEmpty()) return null;
         return list;
     }
 
@@ -63,6 +64,7 @@ public class PersonService {
                     addresses.add(aStation.getAddress());
                 }
         }
+        if (addresses.isEmpty()) return null;
 
         for (String address : addresses) {
             for (Person person : allPersons) {

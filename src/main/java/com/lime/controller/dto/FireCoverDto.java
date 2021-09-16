@@ -1,7 +1,10 @@
 package com.lime.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class FireCoverDto {
     private List<APerson> personList;
     private int total_adult;

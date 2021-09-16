@@ -63,7 +63,9 @@ public class StationService {
                 }
             }
         }
-
+        if (list.isEmpty()) {
+            return null;
+        }
         map = getMap(list, groupAddress);
         return map;
     }
@@ -120,6 +122,7 @@ public class StationService {
             List<String> allergies = recordByName.getAllergies();
             list.add(new PersonWithRecord(firstName, lastName, phone, age, medications, allergies));
         }
+        if (list.isEmpty()) return null;
         fireAddressDto.setPersonWithRecordList(list);
         fireAddressDto.setStationNumbers(numbers);
         return fireAddressDto;
@@ -153,6 +156,9 @@ public class StationService {
                 }
                 personList.add(new APerson(firstName, lastName, address, person.getPhone()));
             }
+        }
+        if (personList.isEmpty()) {
+            return null;
         }
         fireCoverDto.setPersonList(personList);
         fireCoverDto.setTotal_adult(total_adult);
