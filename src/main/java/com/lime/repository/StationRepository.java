@@ -63,8 +63,11 @@ public class StationRepository {
     public Boolean save(Station station) {
         if (station.getAddress() != null) {
             for (Station aStation : this.getAllStations()) {
-                if ( !station.getAddress().equals(aStation.getAddress()) && station.getStation() != aStation.getStation()) {
-                    return this.getAllStations().add(station);
+                if ( station.getAddress().equals(aStation.getAddress()) && station.getStation() == aStation.getStation()) {
+                    return false;
+                } else {
+                    this.getAllStations().add(station);
+                    return true;
                 }
             }
         }
@@ -98,7 +101,8 @@ public class StationRepository {
         if (station.getAddress() != null) {
             for (Station aStation : this.getAllStations()) {
                 if (station.getAddress().equals(aStation.getAddress())) {
-                    return this.getAllStations().remove(aStation);
+                    this.getAllStations().remove(aStation);
+                    return true;
                 }
             }
         }

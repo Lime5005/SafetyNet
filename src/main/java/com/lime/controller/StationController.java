@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @RestController
 public class StationController {
@@ -52,17 +51,26 @@ public class StationController {
     }
     
     @PostMapping(path = "/firestations")
-    public Boolean addStation(@RequestBody Station station) {
-        return stationService.addStation(station);
+    public ResponseEntity<Boolean> addStation(@RequestBody Station station) {
+        Boolean bool = stationService.addStation(station);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping(path = "/firestations")
-    public Boolean updateStation(@RequestBody Station station) {
-        return stationService.updateStation(station);
+    public ResponseEntity<Boolean> updateStation(@RequestBody Station station) {
+        Boolean bool = stationService.updateStation(station);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping(path = "/firestations")
-    public Boolean deleteStation(@RequestBody Station station) {
-        return stationService.deleteStation(station);
+    public ResponseEntity<Boolean> deleteStation(@RequestBody Station station) {
+        Boolean bool = stationService.deleteStation(station);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 }

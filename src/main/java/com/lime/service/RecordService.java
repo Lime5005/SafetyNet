@@ -76,9 +76,8 @@ public class RecordService {
                 family.add(person);
             }
         }
-        if (list.isEmpty()) {
-            return null;
-        }
+        if (list.isEmpty()) return null;
+
         childAlertDto.setChildren(list);
         childAlertDto.setFamilyMembers(family);
         return childAlertDto;

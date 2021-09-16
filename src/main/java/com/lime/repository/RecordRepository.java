@@ -61,7 +61,8 @@ public class RecordRepository {
                 && record.getLastName().equals(aRecord.getLastName())) {
                     return false;
                 } else {
-                    return this.getAllRecords().add(record);
+                    this.getAllRecords().add(record);
+                    return true;
                 }
             }
         }
@@ -98,7 +99,8 @@ public class RecordRepository {
             for (Record medicalrecord : this.getAllRecords()) {
                 if (medicalrecord.getFirstName().equals(record.getFirstName())
                         && medicalrecord.getLastName().equals(record.getLastName())) {
-                    return this.getAllRecords().remove(medicalrecord);
+                    this.getAllRecords().remove(medicalrecord);
+                    return true;
                 }
             }
         }

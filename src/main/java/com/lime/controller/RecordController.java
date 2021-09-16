@@ -24,8 +24,7 @@ public class RecordController {
 
     @GetMapping("/medicalRecords")
     public List<Record> getRecords() {
-        List<Record> medicalrecords = recordService.getAllRecords();
-        return medicalrecords;
+        return recordService.getAllRecords();
     }
 
     @RequestMapping(path="/personInfo", method = RequestMethod.GET)
@@ -45,17 +44,26 @@ public class RecordController {
     }
 
     @PostMapping(path = "/medicalRecords")
-    public Boolean createRecord(@RequestBody Record record) {
-        return recordService.addRecord(record);
+    public ResponseEntity<Boolean> createRecord(@RequestBody Record record) {
+        Boolean bool = recordService.addRecord(record);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping( "/medicalRecords")
-    public Boolean updateRecord(@RequestBody Record record) {
-        return recordService.updateRecord(record);
+    public ResponseEntity<Boolean> updateRecord(@RequestBody Record record) {
+        Boolean bool = recordService.updateRecord(record);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping( "/medicalRecords")
-    public Boolean deleteRecord(@RequestBody Record record) {
-        return recordService.deleteRecord(record);
+    public ResponseEntity<Boolean> deleteRecord(@RequestBody Record record) {
+        Boolean bool = recordService.deleteRecord(record);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 }

@@ -2,7 +2,6 @@ package com.lime.controller;
 
 import com.lime.controller.dto.EmptyJsonResponse;
 import com.lime.domain.Person;
-import com.lime.domain.Station;
 import com.lime.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,20 +43,28 @@ public class PersonController {
          return personService.getAllPersons();
     }
 
-
     @PostMapping(path = "/persons")
-    public Boolean createPerson(@RequestBody Person person) {
-        return personService.createPerson(person);
+    public ResponseEntity<Boolean> createPerson(@RequestBody Person person) {
+        Boolean bool = personService.createPerson(person);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping(path="/persons")
-    public Boolean updatePerson(@RequestBody Person person) {
-        return personService.updatePerson(person);
+    public ResponseEntity<Boolean> updatePerson(@RequestBody Person person) {
+        Boolean bool = personService.updatePerson(person);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping(path = "/persons")
-    public Boolean deletePerson(@RequestBody Person person) {
-        return personService.deletePerson(person);
+    public ResponseEntity<Boolean> deletePerson(@RequestBody Person person) {
+        Boolean bool = personService.deletePerson(person);
+        if (bool) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 
 }
