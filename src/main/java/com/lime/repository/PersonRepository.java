@@ -51,8 +51,8 @@ public class PersonRepository {
     public Boolean savePerson(Person person) {
         if (person.getFirstName() != null && person.getLastName() != null) {
             for (Person aPerson : this.getAllPersons()) {
-                if (person.getFirstName().equals(aPerson.getFirstName())
-                        && person.getLastName().equals(aPerson.getLastName())) {
+                if (aPerson.getFirstName().equals(person.getFirstName())
+                        && aPerson.getLastName().equals(person.getLastName())) {
                     return false;
                 } else {
                     return this.getAllPersons().add(person);
@@ -94,7 +94,8 @@ public class PersonRepository {
             for (Person aPerson : this.getAllPersons()) {
                 if (person.getFirstName().equals(aPerson.getFirstName())
                         && person.getLastName().equals(aPerson.getLastName())) {
-                    return this.getAllPersons().remove(aPerson);
+                    this.getAllPersons().remove(aPerson);
+                    return true;
                 }
             }
         }

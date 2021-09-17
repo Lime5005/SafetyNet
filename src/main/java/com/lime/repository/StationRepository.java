@@ -61,13 +61,12 @@ public class StationRepository {
      * @return true if added successfully, or false if failed.
      */
     public Boolean save(Station station) {
-        if (station.getAddress() != null) {
+        if (station.getAddress() != null && station.getStation() != 0) {
             for (Station aStation : this.getAllStations()) {
                 if ( station.getAddress().equals(aStation.getAddress()) && station.getStation() == aStation.getStation()) {
                     return false;
                 } else {
-                    this.getAllStations().add(station);
-                    return true;
+                    return this.getAllStations().add(station);
                 }
             }
         }
@@ -80,7 +79,7 @@ public class StationRepository {
      * @return true if updated successfully, or false if failed.
      */
     public Boolean updateStation(Station station) {
-        if (station.getAddress() != null) {
+        if (station.getAddress() != null && station.getStation() != 0) {
             for (Station aStation : this.getAllStations()) {
                 if (station.getAddress().equals(aStation.getAddress()) &&
                         station.getStation() != aStation.getStation()) {
@@ -98,7 +97,7 @@ public class StationRepository {
      * @return true if deleted successfully, or false if failed.
      */
     public Boolean deleteStation(Station station) {
-        if (station.getAddress() != null) {
+        if (station.getAddress() != null && station.getStation() != 0) {
             for (Station aStation : this.getAllStations()) {
                 if (station.getAddress().equals(aStation.getAddress())) {
                     this.getAllStations().remove(aStation);
