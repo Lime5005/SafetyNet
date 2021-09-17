@@ -89,3 +89,128 @@
 2021-09-14 17:53:49.552  === [http-nio-8080-exec-1] === INFO  === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] ===  Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-09-14 17:53:49.554  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Initializing Servlet 'dispatcherServlet'
 2021-09-14 17:53:49.558  === [http-nio-8080-exec-1] === INFO  === org.springframework.web.servlet.DispatcherServlet ===  Completed initialization in 4 ms
+2021-09-17 18:12:53.182  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Starting SafetyNetAppTest using Java 16.0.2 on xiaomirepeaterv3.home with PID 28437 (started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-17 18:12:53.185  === [main] === DEBUG === com.lime.SafetyNetAppTest ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-17 18:12:53.190  === [main] === INFO  === com.lime.SafetyNetAppTest ===  No active profile set, falling back to default profiles: default
+2021-09-17 18:12:58.134  === [main] === INFO  === o.s.b.test.mock.web.SpringBootMockServletContext ===  Initializing Spring TestDispatcherServlet ''
+2021-09-17 18:12:58.135  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Initializing Servlet ''
+2021-09-17 18:12:58.147  === [main] === INFO  === o.s.b.actuate.endpoint.web.EndpointLinksResolver ===  Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-09-17 18:12:58.176  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Completed initialization in 41 ms
+2021-09-17 18:12:58.226  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Started SafetyNetAppTest in 5.616 seconds (JVM running for 7.286)
+2021-09-17 18:12:58.793  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to get children alert by address: 99 avenue Paris
+2021-09-17 18:14:08.703  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Starting SafetyNetAppTest using Java 16.0.2 on xiaomirepeaterv3.home with PID 28455 (started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-17 18:14:08.704  === [main] === DEBUG === com.lime.SafetyNetAppTest ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-17 18:14:08.710  === [main] === INFO  === com.lime.SafetyNetAppTest ===  No active profile set, falling back to default profiles: default
+2021-09-17 18:14:13.523  === [main] === INFO  === o.s.b.test.mock.web.SpringBootMockServletContext ===  Initializing Spring TestDispatcherServlet ''
+2021-09-17 18:14:13.524  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Initializing Servlet ''
+2021-09-17 18:14:13.534  === [main] === INFO  === o.s.b.actuate.endpoint.web.EndpointLinksResolver ===  Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-09-17 18:14:13.562  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Completed initialization in 38 ms
+2021-09-17 18:14:13.615  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Started SafetyNetAppTest in 5.367 seconds (JVM running for 7.239)
+2021-09-17 18:14:14.190  === [main] === ERROR === com.lime.controller.StationController ===  Station Station{address='888 Manchester St', station='100'} failed to be updated (is the same data or doesn't exist).
+2021-09-17 18:14:14.338  === [main] === ERROR === com.lime.controller.PersonController ===  Failed to create Person: Person{firstName='John', lastName='Boyd', address='947 E. Rose Dr', city='Culver', zip='97451', phone='841-874-7784', email='ssanw@email.com'}
+2021-09-17 18:14:14.408  === [main] === INFO  === com.lime.controller.PersonController ===  City Culver is queried to get all emails.
+2021-09-17 18:14:14.521  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='John', lastName='Boyd', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]} is updated!
+2021-09-17 18:14:14.557  === [main] === INFO  === com.lime.controller.StationController ===  Station address 112 Steppes Pl is queried to get stations.
+2021-09-17 18:14:14.623  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Lili', lastName='Rose', address='1509 Culver St', city='Culver', zip='97451', phone='841-874-6512', email='lili@email.com'} is created!
+2021-09-17 18:14:14.654  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='489 Manchester St', station='8'} is updated!
+2021-09-17 18:14:14.683  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='951 LoneTree Rd', station='2'} is deleted!
+2021-09-17 18:14:14.719  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Clive', lastName='Ferguson', address='748 Townings Dr', city='Culver', zip='97451', phone='841-874-6741', email='clivfd@ymail.com'} is deleted!
+2021-09-17 18:14:14.769  === [main] === INFO  === com.lime.controller.RecordController ===  Query to get children alert by address: 892 Downing Ct
+2021-09-17 18:14:14.823  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='29 15th St', station='9'} is created!
+2021-09-17 18:14:14.857  === [main] === ERROR === com.lime.controller.StationController ===  Failed to get stations by address: 30 rue du province
+2021-09-17 18:14:14.927  === [main] === INFO  === com.lime.controller.RecordController ===  Query to get person with record by firstName: Jamie, lastName: Peters
+2021-09-17 18:14:14.970  === [main] === INFO  === com.lime.controller.PersonController ===  Fire station 1 is queried to get phones.
+2021-09-17 18:14:15.016  === [main] === ERROR === com.lime.controller.StationController ===  Failed to get persons by stations: [800]
+2021-09-17 18:14:15.060  === [main] === INFO  === com.lime.controller.StationController ===  Stations [1] is queried to get persons.
+2021-09-17 18:14:15.113  === [main] === ERROR === com.lime.controller.StationController ===  Station Station{address='000 LoneTree', station='2'} failed to be deleted (is null or doesn't exist).
+2021-09-17 18:14:15.141  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Eric', lastName='Cadigan', address='951 LoneTree Rd', city='Culver', zip='97451', phone='841-874-7458', email='gramps@email.com'} is updated!
+2021-09-17 18:14:15.162  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to get children alert by address: 99 avenue Paris
+2021-09-17 18:14:15.200  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='SSS', lastName='DDD', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[nillacilan]} is created!
+2021-09-17 18:14:15.222  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='Eric', lastName='Cadigan', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]} is deleted!
+2021-09-17 18:14:15.253  === [main] === ERROR === com.lime.controller.PersonController ===  Failed to get phones by fire station: 100
+2021-09-17 18:14:15.289  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to delete record: Record{firstName='III', lastName='LLL', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]}
+2021-09-17 18:14:15.306  === [main] === INFO  === com.lime.controller.StationController ===  Station number 1 is queried to get persons.
+2021-09-17 18:14:54.521  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Starting SafetyNetAppTest using Java 16.0.2 on xiaomirepeaterv3.home with PID 28467 (started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-17 18:14:54.531  === [main] === DEBUG === com.lime.SafetyNetAppTest ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-17 18:14:54.538  === [main] === INFO  === com.lime.SafetyNetAppTest ===  No active profile set, falling back to default profiles: default
+2021-09-17 18:14:59.290  === [main] === INFO  === o.s.b.test.mock.web.SpringBootMockServletContext ===  Initializing Spring TestDispatcherServlet ''
+2021-09-17 18:14:59.291  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Initializing Servlet ''
+2021-09-17 18:14:59.315  === [main] === INFO  === o.s.b.actuate.endpoint.web.EndpointLinksResolver ===  Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-09-17 18:14:59.347  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Completed initialization in 56 ms
+2021-09-17 18:14:59.395  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Started SafetyNetAppTest in 5.513 seconds (JVM running for 7.254)
+2021-09-17 18:14:59.970  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to get children alert by address: 99 avenue Paris
+2021-09-17 18:20:49.041  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Starting SafetyNetAppTest using Java 16.0.2 on xiaomirepeaterv3.home with PID 28521 (started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-17 18:20:49.042  === [main] === DEBUG === com.lime.SafetyNetAppTest ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-17 18:20:49.046  === [main] === INFO  === com.lime.SafetyNetAppTest ===  No active profile set, falling back to default profiles: default
+2021-09-17 18:20:53.537  === [main] === INFO  === o.s.b.test.mock.web.SpringBootMockServletContext ===  Initializing Spring TestDispatcherServlet ''
+2021-09-17 18:20:53.538  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Initializing Servlet ''
+2021-09-17 18:20:53.550  === [main] === INFO  === o.s.b.actuate.endpoint.web.EndpointLinksResolver ===  Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-09-17 18:20:53.592  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Completed initialization in 54 ms
+2021-09-17 18:20:53.642  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Started SafetyNetAppTest in 6.128 seconds (JVM running for 7.829)
+2021-09-17 18:20:54.196  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to get person with firstName: Jamie, lastName: Pet
+2021-09-17 18:21:22.534  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Starting SafetyNetAppTest using Java 16.0.2 on xiaomirepeaterv3.home with PID 28533 (started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-17 18:21:22.535  === [main] === DEBUG === com.lime.SafetyNetAppTest ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-17 18:21:22.542  === [main] === INFO  === com.lime.SafetyNetAppTest ===  No active profile set, falling back to default profiles: default
+2021-09-17 18:21:27.099  === [main] === INFO  === o.s.b.test.mock.web.SpringBootMockServletContext ===  Initializing Spring TestDispatcherServlet ''
+2021-09-17 18:21:27.100  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Initializing Servlet ''
+2021-09-17 18:21:27.115  === [main] === INFO  === o.s.b.actuate.endpoint.web.EndpointLinksResolver ===  Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-09-17 18:21:27.143  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Completed initialization in 43 ms
+2021-09-17 18:21:27.188  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Started SafetyNetAppTest in 5.124 seconds (JVM running for 6.844)
+2021-09-17 18:21:27.746  === [main] === ERROR === com.lime.controller.StationController ===  Station Station{address='888 Manchester St', station='100'} failed to be updated (is the same data or doesn't exist).
+2021-09-17 18:21:27.844  === [main] === ERROR === com.lime.controller.PersonController ===  Failed to create Person: Person{firstName='John', lastName='Boyd', address='947 E. Rose Dr', city='Culver', zip='97451', phone='841-874-7784', email='ssanw@email.com'}
+2021-09-17 18:21:27.956  === [main] === INFO  === com.lime.controller.PersonController ===  City Culver is queried to get all emails.
+2021-09-17 18:21:28.073  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='John', lastName='Boyd', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]} is updated!
+2021-09-17 18:21:28.112  === [main] === INFO  === com.lime.controller.StationController ===  Station address 112 Steppes Pl is queried to get stations.
+2021-09-17 18:21:28.175  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Lili', lastName='Rose', address='1509 Culver St', city='Culver', zip='97451', phone='841-874-6512', email='lili@email.com'} is created!
+2021-09-17 18:21:28.204  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='489 Manchester St', station='8'} is updated!
+2021-09-17 18:21:28.236  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='951 LoneTree Rd', station='2'} is deleted!
+2021-09-17 18:21:28.261  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Clive', lastName='Ferguson', address='748 Townings Dr', city='Culver', zip='97451', phone='841-874-6741', email='clivfd@ymail.com'} is deleted!
+2021-09-17 18:21:28.290  === [main] === INFO  === com.lime.controller.RecordController ===  Query to get children alert by address: 892 Downing Ct
+2021-09-17 18:21:28.334  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='29 15th St', station='9'} is created!
+2021-09-17 18:21:28.358  === [main] === ERROR === com.lime.controller.StationController ===  Failed to get stations by address: 30 rue du province
+2021-09-17 18:21:28.414  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to get person with firstName: Jamie, lastName: Pet
+2021-09-17 18:21:28.460  === [main] === INFO  === com.lime.controller.RecordController ===  Query to get person with record by firstName: Jamie, lastName: Peters
+2021-09-17 18:21:28.503  === [main] === INFO  === com.lime.controller.PersonController ===  Fire station 1 is queried to get phones.
+2021-09-17 18:21:28.541  === [main] === ERROR === com.lime.controller.StationController ===  Failed to get persons by stations: [800]
+2021-09-17 18:21:28.581  === [main] === INFO  === com.lime.controller.StationController ===  Stations [1] is queried to get persons.
+2021-09-17 18:21:28.640  === [main] === ERROR === com.lime.controller.StationController ===  Station Station{address='000 LoneTree', station='2'} failed to be deleted (is null or doesn't exist).
+2021-09-17 18:21:28.679  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Eric', lastName='Cadigan', address='951 LoneTree Rd', city='Culver', zip='97451', phone='841-874-7458', email='gramps@email.com'} is updated!
+2021-09-17 18:21:28.711  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to get children alert by address: 99 avenue Paris
+2021-09-17 18:21:28.753  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='SSS', lastName='DDD', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[nillacilan]} is created!
+2021-09-17 18:21:28.778  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='Eric', lastName='Cadigan', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]} is deleted!
+2021-09-17 18:21:28.791  === [main] === ERROR === com.lime.controller.PersonController ===  Failed to get phones by fire station: 100
+2021-09-17 18:21:28.806  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to delete record: Record{firstName='III', lastName='LLL', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]}
+2021-09-17 18:21:28.820  === [main] === INFO  === com.lime.controller.StationController ===  Station number 1 is queried to get persons.
+2021-09-17 18:21:49.328  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Starting SafetyNetAppTest using Java 16.0.2 on xiaomirepeaterv3.home with PID 28539 (started by lime in /Users/lime/IdeaProjects/SafetyNet)
+2021-09-17 18:21:49.329  === [main] === DEBUG === com.lime.SafetyNetAppTest ===  Running with Spring Boot v2.5.4, Spring v5.3.9
+2021-09-17 18:21:49.334  === [main] === INFO  === com.lime.SafetyNetAppTest ===  No active profile set, falling back to default profiles: default
+2021-09-17 18:21:53.955  === [main] === INFO  === o.s.b.test.mock.web.SpringBootMockServletContext ===  Initializing Spring TestDispatcherServlet ''
+2021-09-17 18:21:53.956  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Initializing Servlet ''
+2021-09-17 18:21:53.967  === [main] === INFO  === o.s.b.actuate.endpoint.web.EndpointLinksResolver ===  Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-09-17 18:21:54.000  === [main] === INFO  === o.s.test.web.servlet.TestDispatcherServlet ===  Completed initialization in 44 ms
+2021-09-17 18:21:54.044  === [main] === INFO  === com.lime.SafetyNetAppTest ===  Started SafetyNetAppTest in 6.22 seconds (JVM running for 7.976)
+2021-09-17 18:21:54.613  === [main] === ERROR === com.lime.controller.StationController ===  Station Station{address='888 Manchester St', station='100'} failed to be updated (is the same data or doesn't exist).
+2021-09-17 18:21:54.702  === [main] === ERROR === com.lime.controller.PersonController ===  Failed to create Person: Person{firstName='John', lastName='Boyd', address='947 E. Rose Dr', city='Culver', zip='97451', phone='841-874-7784', email='ssanw@email.com'}
+2021-09-17 18:21:54.767  === [main] === INFO  === com.lime.controller.PersonController ===  City Culver is queried to get all emails.
+2021-09-17 18:21:54.874  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='John', lastName='Boyd', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]} is updated!
+2021-09-17 18:21:54.914  === [main] === INFO  === com.lime.controller.StationController ===  Station address 112 Steppes Pl is queried to get stations.
+2021-09-17 18:21:54.975  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Lili', lastName='Rose', address='1509 Culver St', city='Culver', zip='97451', phone='841-874-6512', email='lili@email.com'} is created!
+2021-09-17 18:21:55.003  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='489 Manchester St', station='8'} is updated!
+2021-09-17 18:21:55.038  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='951 LoneTree Rd', station='2'} is deleted!
+2021-09-17 18:21:55.066  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Clive', lastName='Ferguson', address='748 Townings Dr', city='Culver', zip='97451', phone='841-874-6741', email='clivfd@ymail.com'} is deleted!
+2021-09-17 18:21:55.118  === [main] === INFO  === com.lime.controller.RecordController ===  Query to get children alert by address: 892 Downing Ct
+2021-09-17 18:21:55.161  === [main] === INFO  === com.lime.controller.StationController ===  Station Station{address='29 15th St', station='9'} is created!
+2021-09-17 18:21:55.188  === [main] === ERROR === com.lime.controller.StationController ===  Failed to get stations by address: 30 rue du province
+2021-09-17 18:21:55.253  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to get person with firstName: Jamie, lastName: Pet
+2021-09-17 18:21:55.294  === [main] === INFO  === com.lime.controller.RecordController ===  Query to get person with record by firstName: Jamie, lastName: Peters
+2021-09-17 18:21:55.333  === [main] === INFO  === com.lime.controller.PersonController ===  Fire station 1 is queried to get phones.
+2021-09-17 18:21:55.375  === [main] === ERROR === com.lime.controller.StationController ===  Failed to get persons by stations: [800]
+2021-09-17 18:21:55.418  === [main] === INFO  === com.lime.controller.StationController ===  Stations [1] is queried to get persons.
+2021-09-17 18:21:55.466  === [main] === ERROR === com.lime.controller.StationController ===  Station Station{address='000 LoneTree', station='2'} failed to be deleted (is null or doesn't exist).
+2021-09-17 18:21:55.497  === [main] === INFO  === com.lime.controller.PersonController ===  Person Person{firstName='Eric', lastName='Cadigan', address='951 LoneTree Rd', city='Culver', zip='97451', phone='841-874-7458', email='gramps@email.com'} is updated!
+2021-09-17 18:21:55.521  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to get children alert by address: 99 avenue Paris
+2021-09-17 18:21:55.559  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='SSS', lastName='DDD', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[nillacilan]} is created!
+2021-09-17 18:21:55.585  === [main] === INFO  === com.lime.controller.RecordController ===  Record Record{firstName='Eric', lastName='Cadigan', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]} is deleted!
+2021-09-17 18:21:55.596  === [main] === ERROR === com.lime.controller.PersonController ===  Failed to get phones by fire station: 100
+2021-09-17 18:21:55.610  === [main] === ERROR === com.lime.controller.RecordController ===  Failed to delete record: Record{firstName='III', lastName='LLL', birthdate=Mon Mar 05 01:00:00 CET 1984, medications=["aznol:350mg", hydrapermazol:100mg], allergies=[]}
+2021-09-17 18:21:55.622  === [main] === INFO  === com.lime.controller.StationController ===  Station number 1 is queried to get persons.

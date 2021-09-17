@@ -91,6 +91,13 @@ public class SafetyNetAppTest {
     }
 
     @Test
+    public void getPerson_givenNotExistName_shouldReturnAnEmptyJson() throws Exception {
+        mockMvc.perform(get("/personInfo?firstName=Jamie&lastName=Pet")).andDo(print()).andExpect(status().isNotFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.length()", is(0)));
+    }
+
+
+    @Test
     public void getAddressesSorted_givenStation_shouldReturnPersons() throws Exception {
         mockMvc.perform(get("/flood/stations?stations=1")).andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", is(3)));
@@ -108,6 +115,12 @@ public class SafetyNetAppTest {
                 .andExpect(jsonPath("$.children[0].age").value(4))
                 .andExpect(jsonPath("$.children.length()", is(1)))
                 .andExpect(jsonPath("$.familyMembers.length()", is(2)));
+    }
+
+    @Test
+    public void getChildren_givenNotExistAddress_shouldReturnAnEmptyJson() throws Exception {
+        mockMvc.perform(get("/childAlert?address=99 avenue Paris")).andDo(print()).andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.length()", is(0)));
     }
 
     //Below are CRUD tests for endpoints:
