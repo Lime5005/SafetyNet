@@ -61,16 +61,20 @@ public class StationRepository {
      * @return true if added successfully, or false if failed.
      */
     public Boolean save(Station station) {
-        if (station.getAddress() != null && station.getStation() != 0) {
-            for (Station aStation : this.getAllStations()) {
-                if ( station.getAddress().equals(aStation.getAddress()) && station.getStation() == aStation.getStation()) {
-                    return false;
-                } else {
-                    return this.getAllStations().add(station);
-                }
+        boolean found = false;
+        if (station.getAddress() == null || station.getStation() == 0) {
+            return false;
+        }
+        for (Station aStation : this.getAllStations()) {
+            if ( station.getAddress().equals(aStation.getAddress()) && station.getStation() == aStation.getStation()) {
+                found = true;
+                break;
             }
         }
-        return false;
+        if (!found) {
+            this.getAllStations().add(station);
+        }
+        return !found;
     }
 
     /**

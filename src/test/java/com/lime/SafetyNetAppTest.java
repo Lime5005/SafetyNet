@@ -270,7 +270,7 @@ public class SafetyNetAppTest {
     // Tests for wrong input, should log error
     @Test
     public void createPerson_withExistPerson_shouldReturnFalse() throws Exception {
-        Person person = new Person("John", "Boyd", "947 E. Rose Dr", "Culver", "97451", "841-874-7784", "ssanw@email.com");
+        Person person = new Person("Zach", "Zemicks", "947 E. Rose Dr", "Culver", "97451", "841-874-7784", "ssanw@email.com");
         MockHttpServletResponse response = mockMvc.perform( MockMvcRequestBuilders
                         .post("/persons")
                         .content(objectMapper.writeValueAsString(person))

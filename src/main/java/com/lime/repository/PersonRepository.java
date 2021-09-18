@@ -49,17 +49,21 @@ public class PersonRepository {
      * @return true if success, or false if failed.
      */
     public Boolean savePerson(Person person) {
-        if (person.getFirstName() != null && person.getLastName() != null) {
-            for (Person aPerson : this.getAllPersons()) {
-                if (aPerson.getFirstName().equals(person.getFirstName())
-                        && aPerson.getLastName().equals(person.getLastName())) {
-                    return false;
-                } else {
-                    return this.getAllPersons().add(person);
-                }
+        boolean found = false;
+        if (person.getFirstName() == null || person.getLastName() == null) {
+            return false;
+        }
+        for (Person aPerson : this.getAllPersons()) {
+            if (aPerson.getFirstName().equals(person.getFirstName())
+                    && aPerson.getLastName().equals(person.getLastName())) {
+                found = true;
+                break;
             }
         }
-        return false;
+        if (!found) {
+            this.getAllPersons().add(person);
+        }
+        return !found;
     }
 
     /**

@@ -55,18 +55,21 @@ public class RecordRepository {
      * @return true if added successfully, or false if failed.
      */
     public Boolean saveRecord(Record record) {
-        if (record.getFirstName() != null && record.getLastName() != null) {
-            for (Record aRecord : this.getAllRecords()) {
-                if (record.getFirstName().equals(aRecord.getFirstName())
-                && record.getLastName().equals(aRecord.getLastName())) {
-                    return false;
-                } else {
-                    this.getAllRecords().add(record);
-                    return true;
-                }
+        boolean found = false;
+        if (record.getFirstName() == null || record.getLastName() == null) {
+            return false;
+        }
+        for (Record aRecord : this.getAllRecords()) {
+            if (record.getFirstName().equals(aRecord.getFirstName())
+                    && record.getLastName().equals(aRecord.getLastName())) {
+                found = true;
+                break;
             }
         }
-        return false;
+        if (!found) {
+            this.getAllRecords().add(record);
+        }
+        return !found;
     }
 
     /**

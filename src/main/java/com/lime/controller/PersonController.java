@@ -51,10 +51,6 @@ public class PersonController {
 
     @GetMapping("/persons")
     public List<Person> getPersons() {
-//        List<Person> persons = personService.getAllPersons();
-//        if (!persons.isEmpty()) {
-//            logger.info("Query to get all persons: " + persons);//log all data??
-//        }
         return personService.getAllPersons();
     }
 
