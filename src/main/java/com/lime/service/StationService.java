@@ -31,12 +31,12 @@ public class StationService {
      * @param stations station numbers in list.
      * @return a list of person with medical records.
      */
-    public Map<String, List<PersonWithRecord>> findAllPersonByStation(List<Integer> stations) {
-        Map<String, List<PersonWithRecord>> map;
+    public Map<String, Set<PersonWithRecord>> findAllPersonByStation(List<Integer> stations) {
+        Map<String, Set<PersonWithRecord>> map;
         List<FloodStationDto> list = new ArrayList<>();
         List<Station> stationsByNumber;
         List<String> allAddresses;
-        List<String> groupAddress = new ArrayList<>();
+        Set<String> groupAddress = new HashSet<>();
 
         //1, Find all addresses concerned first:
         for (Integer station : stations) {
@@ -76,12 +76,12 @@ public class StationService {
      * @param addresses addresses of these persons.
      * @return A map with key: address, value: a list of persons living in the same address.
      */
-    private static Map<String, List<PersonWithRecord>> getMap(List<FloodStationDto> list, List<String> addresses) {
-        Map<String, List<PersonWithRecord>> dtoMap = new LinkedHashMap<>();
+    private static Map<String, Set<PersonWithRecord>> getMap(List<FloodStationDto> list, Set<String> addresses) {
+        Map<String, Set<PersonWithRecord>> dtoMap = new HashMap<>();
 
         //1, Use each address as key:
         for (String address : addresses) {
-            List<PersonWithRecord> persons = new LinkedList<>();
+            Set<PersonWithRecord> persons = new HashSet<>();
 
             for (FloodStationDto floodStationDto : list) {
                 if (floodStationDto.getAddress().equals(address)) {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 public class StationController {
@@ -26,7 +27,7 @@ public class StationController {
 
     @RequestMapping(path="/flood/stations", method = RequestMethod.GET)
     public ResponseEntity<Object> getPersonsByStation(@RequestParam List<Integer> stations) {
-        Map<String, List<PersonWithRecord>> listMap = stationService.findAllPersonByStation(stations);
+        Map<String, Set<PersonWithRecord>> listMap = stationService.findAllPersonByStation(stations);
         if (listMap != null) {
             logger.info("Stations " + stations + " is queried to get persons.");
             return new ResponseEntity<>(listMap, HttpStatus.OK);
