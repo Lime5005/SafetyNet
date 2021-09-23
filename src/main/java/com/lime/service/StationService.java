@@ -34,8 +34,8 @@ public class StationService {
     public Map<String, Set<PersonWithRecord>> findAllPersonByStation(List<Integer> stations) {
         Map<String, Set<PersonWithRecord>> map;
         List<FloodStationDto> list = new ArrayList<>();
-        List<Station> stationsByNumber;
-        List<String> allAddresses;
+        Set<Station> stationsByNumber;
+        Set<String> allAddresses;
         Set<String> groupAddress = new HashSet<>();
 
         //1, Find all addresses concerned first:
@@ -135,12 +135,12 @@ public class StationService {
      */
     public FireCoverDto findPersonsByStationNumber(int station) {
         FireCoverDto fireCoverDto = new FireCoverDto();
-        List<APerson> personList = new ArrayList<>();
+        Set<APerson> personList = new HashSet<>();
         int total_adult = 0;
         int total_child = 0;
         //1, Find all addresses of this station number:
-        List<Station> stationsByNumber = stationRepository.getStationsByNumber(station);
-        List<String> addresses = stationRepository.findAllAddresses(stationsByNumber);
+        Set<Station> stationsByNumber = stationRepository.getStationsByNumber(station);
+        Set<String> addresses = stationRepository.findAllAddresses(stationsByNumber);
         //2, Find all person living in these addresses:
         for (String address : addresses) {
             List<Person> persons = personRepository.findPersonsByAddress(address);
@@ -160,7 +160,7 @@ public class StationService {
         if (personList.isEmpty()) {
             return null;
         }
-        fireCoverDto.setPersonList(personList);
+        fireCoverDto.setPersonSet(personList);
         fireCoverDto.setTotal_adult(total_adult);
         fireCoverDto.setTotal_child(total_child);
 

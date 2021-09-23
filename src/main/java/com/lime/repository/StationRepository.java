@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class StationRepository {
@@ -27,18 +29,18 @@ public class StationRepository {
      * @param station station number.
      * @return a list of Station object.
      */
-    public List<Station> getStationsByNumber(int station) {
-        List<Station> list = new ArrayList<>();
+    public Set<Station> getStationsByNumber(int station) {
+        Set<Station> set = new HashSet<>();
         for (Station fireStation : this.getAllStations()) {
             if (fireStation.getStation() == station) {
-                list.add(fireStation);
+                set.add(fireStation);
             }
         }
-        return list;
+        return set;
     }
 
-    public List<String> findAllAddresses(List<Station> stations) {
-        List<String> addresses = new ArrayList<>();
+    public Set<String> findAllAddresses(Set<Station> stations) {
+        Set<String> addresses = new HashSet<>();
         for (Station station : stations) {
             addresses.add(station.getAddress());
         }
